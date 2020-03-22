@@ -8,7 +8,8 @@ module.exports = {
     description: siteConfig.description,
     siteUrl: urljoin(siteConfig.url, siteConfig.prefix),
     social: {
-      twitter: siteConfig.twitter,
+      instagram: siteConfig.instagram,
+      etsy: siteConfig.etsy,
     },
   },
   plugins: [

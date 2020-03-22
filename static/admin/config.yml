@@ -4,19 +4,26 @@ backend:
   branch: master
   site_domain: darrelbelvin.github.io
 
-media_folder: "content"
+local_backend: true
 
-site_url: https://https://hotmesspaint.netlify.com/
+media_folder: "content/blog"
+
+site_url: https://hotmesspaint.netlify.com/
 
 collections:
-  - name: page
-    label: Page
-    folder: "blog"
+  - name: pages
+    label: Pages
+    label_singular: "Page"
+    folder: "content/blog"
+    path: "{{slug}}/index"
+    media_folder: ""
+    public folder: ""
     create: true
     fields:
-      - { name: title, label: title }
-      - { name: date, label: Date, widget: datetime }
-      - { name: thumbnail, label: Title }
-      - { name: description, label: Description }
-      - { name: tags, label: Tags }
+      - { name: title, label: Title }
+      - { name: date, label: Date, widget: date, dateFormat: "YYYY-MM-DD" }
+      - { name: thumbnail, label: Thumbnail, widget: file }
+      - { name: description, label: Description, widget: text }
+      - { name: tags, label: Tags, required: false, widget: list }
       - { name: body, label: Body, widget: markdown }
+    preview_path: "{{slug}}"

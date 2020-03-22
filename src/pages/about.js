@@ -10,30 +10,58 @@ import "../utils/css/screen.css"
 
 const AboutPage = ({ data }, location) => {
   const siteTitle = data.site.siteMetadata.title
+  const socialLinks = data.site.siteMetadata.social
 
   return (
-    <Layout title={siteTitle}>
-      <SEO title="About" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
+    <Layout title={siteTitle} social={socialLinks}>
+      <SEO
+        title="About"
+        keywords={[
+          `blog`,
+          `paint`,
+          `painting`,
+          `pour painting`,
+          "art",
+          "artist",
+          "Jenna Belvin",
+        ]}
+      />
 
       <article className="post-content page-template no-image">
         <div className="post-content-body">
-          <h2 id="clean-minimal-and-deeply-customisable-london-is-a-theme-made-for-people-who-appreciate-simple-lines-">
-            Clean, minimal, and deeply customisable. London is a theme made for
-            people who appreciate simple lines.
+          <h2>
+            Creative, beautiful, and often a hot mess. Jenna Belvin is an artist
+            with a passion for abstract and pour pieces.
           </h2>
           <figure className="kg-card kg-image-card kg-width-full">
             <Img
-              fluid={data.benchAccounting.childImageSharp.fluid}
+              fluid={data.profileShot.childImageSharp.fluid}
               className="kg-image"
             />
-            <figcaption>Large imagery is at the heart of this theme</figcaption>
+            <figcaption>
+              Jenna's first 3-foot by 3-foot commissioned piece
+            </figcaption>
           </figure>
-          <h3 id="dynamic-styles">Dynamic styles</h3>
+          <h3 id="dynamic-styles">About Jenna</h3>
           <p>
-            London comes with photo-centric main layout best suited to
-            photography, graphics portfolios and other image-heavy uses.
+            Born in Anapolis Brazil, currently living in Seattle with her
+            husband and two cats. Jenna enjoys painting, movies, and fantasy
+            fiction.
           </p>
           <p>
+            Follow her on{" "}
+            <a href={`https://www.instagram.com/${socialLinks.instagram}/`}>
+              {" "}
+              Instagram
+            </a>{" "}
+            and check out her
+            <a href={`https://www.etsy.com/shop/${socialLinks.etsy}/`}>
+              {" "}
+              Etsy shop
+            </a>
+            !
+          </p>
+          {/* <p>
             Both post and page templates are light and minimal, with all the
             focus on the content while the design of the theme gets out of the
             way. Beneath the hood, London enjoys the full power of the{" "}
@@ -48,7 +76,7 @@ const AboutPage = ({ data }, location) => {
               Ghost Integrations Directory
             </a>{" "}
             for more ways to integrate Ghost with your favourite services.
-          </p>
+          </p> */}
         </div>
       </article>
     </Layout>
@@ -59,12 +87,15 @@ const indexQuery = graphql`
   query {
     site {
       siteMetadata {
+        author
+        social {
+          instagram
+          etsy
+        }
         title
       }
     }
-    benchAccounting: file(
-      relativePath: { eq: "bench-accounting-49909-unsplash.jpg" }
-    ) {
+    profileShot: file(relativePath: { eq: "houseShotHoriz.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1360) {
           ...GatsbyImageSharpFluid
