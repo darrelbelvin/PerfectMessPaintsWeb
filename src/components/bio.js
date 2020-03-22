@@ -25,11 +25,15 @@ function Bio() {
               }}
             />
             <p>
-              Written by <strong>{author}</strong> who lives and works in Osaka
-              building useful things.
+              Written by <strong>{author}</strong> who lives and works in
+              Seattle creating beautiful things.
               {` `}
-              <a href={`https://twitter.com/${social.twitter}`}>
-                You should follow him on Twitter
+              <a href={`https://www.instagram.com/${social.instagram}/`}>
+                You should follow her on Instagram
+              </a>
+              {` `}
+              <a href={`https://www.etsy.com/shop/${social.etsy}/`}>
+                And check out her Etsy shop
               </a>
             </p>
           </section>
@@ -52,7 +56,8 @@ const bioQuery = graphql`
       siteMetadata {
         author
         social {
-          twitter
+          instagram
+          etsy
         }
       }
     }

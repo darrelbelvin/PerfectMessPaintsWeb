@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 
 const Layout = props => {
-  const { title, children } = props
+  const { title, social, children } = props
   const [toggleNav, setToggleNav] = React.useState(false)
   return (
     <div className={`site-wrapper ${toggleNav ? `site-head-open` : ``}`}>
@@ -32,9 +32,9 @@ const Layout = props => {
               <li className="nav-about" role="menuitem">
                 <Link to={`/about`}>About</Link>
               </li>
-              <li className="nav-elements" role="menuitem">
+              {/* <li className="nav-elements" role="menuitem">
                 <Link to={`/elements`}>Elements</Link>
-              </li>
+              </li> */}
               <li className="nav-tags" role="menuitem">
                 <Link to={`/tags`}>Tags</Link>
               </li>
@@ -48,36 +48,20 @@ const Layout = props => {
           <div className="site-head-right">
             <div className="social-links">
               <a
-                href="https://www.facebook.com"
-                title="Facebook"
+                href={`https://www.etsy.com/shop/${social.instagram}/`}
+                title="Instagram"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Facebook
+                Instagram
               </a>
               <a
-                href="https://twitter.com"
-                title="Twitter"
+                href={`https://www.etsy.com/shop/${social.etsy}/`}
+                title="Etsy"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Twitter
-              </a>
-              <Link
-                to={`/rss.xml`}
-                title="RSS"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                RSS
-              </Link>
-              <a
-                href="https://github.com/vaporwavy/gatsby-london-after-midnight"
-                title="GitHub"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
+                Etsy
               </a>
             </div>
           </div>

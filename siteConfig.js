@@ -1,9 +1,11 @@
 module.exports = {
-  name: 'London After Midnight',
-  shortName: 'LAM',
-  description: 'A bold, minimal theme for Gatsby, focused on clean typography & beautiful imagery',
-  url: 'https://gatsby-lam.vaporwavy.io', // Domain of your site without prefix!
-  prefix: '/',
-  author: 'Vaporwavy',
-  twitter: ''
+  name: "Hot Mess Paint",
+  shortName: "HMP",
+  description:
+    "Jenna Belvin's ary gallery. Mostly pour paintings, some abstract and other pieces. Available for commissions!",
+  url: "https://hotmesspaint.netlify.com/", // Domain of your site without prefix!
+  prefix: "/",
+  author: "Jenna Belvin",
+  instagram: "jennabelvinarts",
+  etsy: "hotmesspaint",
 }
