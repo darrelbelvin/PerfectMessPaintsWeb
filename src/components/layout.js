@@ -10,7 +10,7 @@ const Layout = props => {
         <div className="site-head-container">
           <a
             className="nav-burger"
-            href={`none`}
+            href={`#`}
             onClick={() => setToggleNav(!toggleNav)}
           >
             <div
