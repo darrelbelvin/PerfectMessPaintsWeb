@@ -16,14 +16,15 @@ collections:
     label_singular: "Page"
     folder: "content/blog"
     path: "{{slug}}/index"
-    media_folder: ""
-    public folder: ""
+    media_folder: "{{slug}}"
+    public folder: "{{slug}}"
     create: true
     fields:
       - { name: title, label: Title }
-      - { name: date, label: Date, widget: date, dateFormat: "YYYY-MM-DD" }
+      - { name: date, label: Date, widget: date, dateFormat: "YYYY-MM-DD", format: "YYYY-MM-DD" }
       - { name: thumbnail, label: Thumbnail, widget: file }
       - { name: description, label: Description, widget: text }
       - { name: tags, label: Tags, required: false, widget: list }
+      - { name: available, label: Available, widget: boolean }
       - { name: body, label: Body, widget: markdown }
     preview_path: "{{slug}}"

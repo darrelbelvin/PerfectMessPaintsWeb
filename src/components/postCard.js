@@ -2,26 +2,39 @@ import React, { Component } from "react";
 import { Link } from "gatsby"
 import Tags from "./tag"
 
-export default props => (
-  <article
-    className={`post-card ${props.count % 3 === 0 && `post-card-large`} ${
-      props.postClass
-    } ${props.node.frontmatter.thumbnail ? `with-image` : `no-image`}`}
-    style={
-      props.node.frontmatter.thumbnail && {
-        backgroundImage: `url(${
-          props.node.frontmatter.thumbnail.childImageSharp.fluid.src
-        })`,
-      }
+function render(props) {
+  var ribbon;
+  ribbon = ''
+  if("available" in props.node.frontmatter){
+    if(props.node.frontmatter.available) {
+      ribbon = <div className="ribbon ribbon-blue ribbon-top-right"><span>available</span></div>;
+    } else {
+      ribbon = <div className="ribbon ribbon-top-right"><span>sold</span></div>;
     }
-  >
-      {
-        props.node.frontmatter.thumbnail
-          ?(<ContentWithImage props={props}/>)
-          :(<ContentNoImage props={props}/>)
+  }
+  
+  return (
+    <article
+      className={`post-card ${props.count % 3 === 0 && `post-card-large`} ${
+        props.postClass
+      } ${props.node.frontmatter.thumbnail ? `with-image` : `no-image`}`}
+      style={
+        props.node.frontmatter.thumbnail && {
+          backgroundImage: `url(${
+            props.node.frontmatter.thumbnail.childImageSharp.fluid.src
+          })`,
+        }
       }
-  </article>
-)
+    >
+        {
+          props.node.frontmatter.thumbnail
+            ?(<ContentWithImage props={props}/>)
+            :(<ContentNoImage props={props}/>)
+        }
+      {ribbon}
+    </article>
+  )
+}
 
 class ContentNoImage extends Component {
   render() {
@@ -72,3 +85,5 @@ class ContentWithImage extends Component {
     );
   }
 }
+
+export default render

@@ -2,21 +2,6 @@
 /* ---------------------------------------------------------- */
 
 @import url(https://fonts.googleapis.com/css?family=Lato:700);
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: #f0f0f0;
-}
-.box {
-  position: relative;
-  max-width: 600px;
-  width: 90%;
-  height: 400px;
-  background: #fff;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
 
 /* common */
 .ribbon {
@@ -31,20 +16,28 @@ body {
   z-index: -1;
   content: "";
   display: block;
-  border: 5px solid #2980b9;
+  border: 5px solid #212121;
 }
 .ribbon span {
   position: absolute;
   display: block;
   width: 225px;
   padding: 15px 0;
-  background-color: #3498db;
+  background-color: #2f2f2f;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  color: #fff;
+  color: #f5f5f7;
   font: 700 18px/1 "Lato", sans-serif;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   text-transform: uppercase;
   text-align: center;
+}
+
+.ribbon-blue::before,
+.ribbon-blue::after {
+  border: 5px solid #233d4e;
+}
+.ribbon-blue span {
+  background-color: #355d77;
 }
 
 /* top left*/

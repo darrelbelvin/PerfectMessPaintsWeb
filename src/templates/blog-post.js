@@ -11,6 +11,14 @@ class BlogPostTemplate extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title
     const socialLinks = this.props.data.site.siteMetadata.social
 
+    var ribbon;
+    if(post.frontmatter.available) {
+      ribbon = <div className="ribbon ribbon-blue ribbon-top-right"><span>available</span></div>;
+    } else {
+      ribbon = <div className="ribbon ribbon-top-right"><span>sold</span></div>;
+    }
+
+
     return (
       <Layout
         location={this.props.location}
@@ -36,9 +44,11 @@ class BlogPostTemplate extends React.Component {
             <div className="post-content-image">
               <Img
                 className="kg-image"
+                label='sold'
                 fluid={post.frontmatter.thumbnail.childImageSharp.fluid}
                 alt={post.frontmatter.title}
               />
+              {ribbon} 
             </div>
           )}
 
@@ -81,6 +91,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        available
         thumbnail {
           childImageSharp {
             fluid(maxWidth: 1360) {

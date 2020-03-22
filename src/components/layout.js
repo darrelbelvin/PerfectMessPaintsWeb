@@ -10,7 +10,7 @@ const Layout = props => {
         <div className="site-head-container">
           <a
             className="nav-burger"
-            href={`#`}
+            href={`none`}
             onClick={() => setToggleNav(!toggleNav)}
           >
             <div
@@ -24,7 +24,7 @@ const Layout = props => {
               </div>
             </div>
           </a>
-          <nav id="swup" class="site-head-left">
+          <nav id="swup" className="site-head-left">
             <ul className="nav" role="menu">
               {/* <li className="nav-home nav-current" role="menuitem">
                 <Link to={`/`}>Home</Link>
@@ -48,7 +48,7 @@ const Layout = props => {
           <div className="site-head-right">
             <div className="social-links">
               <a
-                href={`https://www.etsy.com/shop/${social.instagram}/`}
+                href={`https://www.instagram.com/${social.instagram}/`}
                 title="Instagram"
                 target="_blank"
                 rel="noopener noreferrer"
