@@ -6,7 +6,7 @@ backend:
 
 local_backend: true
 
-media_folder: "content/blog"
+media_folder: "content/blog/{{slug}}"
 
 site_url: https://hotmesspaint.netlify.com/
 
@@ -16,8 +16,8 @@ collections:
     label_singular: "Page"
     folder: "content/blog"
     path: "{{slug}}/index"
-    media_folder: "{{slug}}"
-    public folder: "{{slug}}"
+    media_folder: ""
+    public folder: ""
     create: true
     fields:
       - { name: title, label: Title }
