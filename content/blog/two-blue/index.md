@@ -8,5 +8,6 @@ tags:
   - white
   - flip-cup
 available: false
+buy_link: 'https://asdfkljhaskldjfhg'
 ---
 ![with coke for comparison](img_3283.jpg)

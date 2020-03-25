@@ -1,18 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "gatsby"
 import Tags from "./tag"
+import Ribbon from "../components/ribbon"
 
 function render(props) {
-  var ribbon;
-  ribbon = ''
-  if("available" in props.node.frontmatter){
-    if(props.node.frontmatter.available) {
-      ribbon = <div className="ribbon ribbon-blue ribbon-top-right"><span>available</span></div>;
-    } else {
-      ribbon = <div className="ribbon ribbon-top-right"><span>sold</span></div>;
-    }
-  }
-  
   return (
     <article
       className={`post-card ${props.count % 3 === 0 && `post-card-large`} ${
@@ -31,7 +22,10 @@ function render(props) {
             ?(<ContentWithImage props={props}/>)
             :(<ContentNoImage props={props}/>)
         }
-      {ribbon}
+      <Ribbon available={props.node.frontmatter.available}
+              price={props.node.frontmatter.price}
+              name={props.node.frontmatter.title}
+              buy_link={props.node.frontmatter.buy_link}/>
     </article>
   )
 }

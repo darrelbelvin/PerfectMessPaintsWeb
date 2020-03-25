@@ -4,20 +4,14 @@ import Img from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Ribbon from "../components/ribbon"
 
 class BlogPostTemplate extends React.Component {
+
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const socialLinks = this.props.data.site.siteMetadata.social
-
-    var ribbon;
-    if(post.frontmatter.available) {
-      ribbon = <div className="ribbon ribbon-blue ribbon-top-right"><span>available</span></div>;
-    } else {
-      ribbon = <div className="ribbon ribbon-top-right"><span>sold</span></div>;
-    }
-
 
     return (
       <Layout
@@ -37,7 +31,7 @@ class BlogPostTemplate extends React.Component {
           </header>
 
           {post.frontmatter.description && (
-            <p class="post-content-excerpt">{post.frontmatter.description}</p>
+            <p className="post-content-excerpt">{post.frontmatter.description}</p>
           )}
 
           {post.frontmatter.thumbnail && (
@@ -48,7 +42,10 @@ class BlogPostTemplate extends React.Component {
                 fluid={post.frontmatter.thumbnail.childImageSharp.fluid}
                 alt={post.frontmatter.title}
               />
-              {ribbon} 
+              <Ribbon available={post.frontmatter.available}
+                      price={post.frontmatter.price}
+                      name={post.frontmatter.title}
+                      buy_link={post.frontmatter.buy_link}/>
             </div>
           )}
 
@@ -92,6 +89,8 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         description
         available
+        price
+        buy_link
         thumbnail {
           childImageSharp {
             fluid(maxWidth: 1360) {

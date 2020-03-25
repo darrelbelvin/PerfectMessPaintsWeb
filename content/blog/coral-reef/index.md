@@ -1,14 +1,15 @@
 ---
-title: Crab Dreams
+title: Coral Reef
 date: '2020-03-23'
 thumbnail: img_0532_2.jpg
-description: Lots of cells in this one. Reminiscent of sea foam with a ghostly crab-claw.
+description: I spy a crab claw. What do you see?
 tags:
   - blue
   - red
   - 16x20
   - sea
 available: true
+price: '$150'
 ---
 
 
