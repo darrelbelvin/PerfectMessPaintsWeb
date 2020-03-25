@@ -1,9 +1,9 @@
 module.exports = {
-  name: "Hot Mess Paint",
-  shortName: "HMP",
+  name: "Perfect Mess Paints", //"Hot Mess Paint", "Enigma Paints", "Loco Paints"
+  shortName: "PMP",
   description:
     "Jenna Belvin's art gallery. Mostly pour paintings, some abstract and other pieces. Available for commissions!",
-  url: "https://hotmesspaint.netlify.com/", // Domain of your site without prefix!
+  url: "https://perfectmesspaints.netlify.com/", // Domain of your site without prefix!
   prefix: "/",
   author: "Jenna Belvin",
   instagram: "jennabelvinarts",

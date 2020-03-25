@@ -71,6 +71,9 @@ export const pageQuery = graphql`
             title
             description
             tags
+            available
+            price
+            buy_link
             thumbnail {
               childImageSharp {
                 fluid(maxWidth: 1360) {

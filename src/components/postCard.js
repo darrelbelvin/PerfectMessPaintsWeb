@@ -19,13 +19,13 @@ function render(props) {
     >
         {
           props.node.frontmatter.thumbnail
-            ?(<ContentWithImage props={props}/>)
+            ?([<ContentWithImage props={props}/>,
+              <Ribbon available={props.node.frontmatter.available}
+                price={props.node.frontmatter.price}
+                name={props.node.frontmatter.title}
+                buy_link={props.node.frontmatter.buy_link}/>])
             :(<ContentNoImage props={props}/>)
         }
-      <Ribbon available={props.node.frontmatter.available}
-              price={props.node.frontmatter.price}
-              name={props.node.frontmatter.title}
-              buy_link={props.node.frontmatter.buy_link}/>
     </article>
   )
 }

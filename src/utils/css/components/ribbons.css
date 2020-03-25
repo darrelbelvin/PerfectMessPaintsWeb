@@ -6,6 +6,7 @@
 /* common */
 .ribbon {
   width: 150px;
+  pointer-events: none;
   height: 150px;
   overflow: hidden;
   position: absolute;
@@ -19,6 +20,7 @@
   border: 5px solid #212121;
 }
 .ribbon span {
+  pointer-events: all;
   position: absolute;
   display: block;
   width: 225px;
