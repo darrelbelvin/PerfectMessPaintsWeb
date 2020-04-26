@@ -1,15 +1,19 @@
 ---
 title: Splash Nebula
-date: '2020-03-23'
-thumbnail: img_0452.jpg
+date: '2020-01-30'
+thumbnail: IMG_0452.JPG
 description: A nebulous splash of blue and gold.
 tags:
-  - blue
+  - Blue
+  - White
+  - Dutch Pour
 available: false
+price: '$75'
 ---
 
-![](img_0459.jpg)
+![](IMG_0459.JPG)
 
-![](img_0453.jpg)
+![](IMG_0453.JPG)
 
-![](img_0454.jpg)
+![](IMG_0454.JPG)
+

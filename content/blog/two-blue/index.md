@@ -1,13 +1,15 @@
 ---
 title: Two Blue
-date: '2020-03-02'
-thumbnail: img_3277.jpg
+date: '2019-11-25'
+thumbnail: IMG_3277.JPG
 description: A beautiful blue on white flip cup pour.
 tags:
-  - blue
-  - white
-  - flip-cup
+  - Blue
+  - White
+  - Dutch Pour
 available: false
-buy_link: 'https://asdfkljhaskldjfhg'
+price: '$155'
 ---
-![with coke for comparison](img_3283.jpg)
+
+![](IMG_3283.JPG)
+

@@ -1,20 +1,21 @@
 ---
 title: The Golden Lining
-date: '2020-03-24'
-thumbnail: img_0569_final.jpg
-description: 'This storm is better, it''s lining is golden.'
+date: '2020-02-10'
+thumbnail: IMG_0569.JPG
+description: This storm is better, it''s lining is golden.
 tags:
-  - blue
-  - gold
-  - 16x20
+  - Paynes Grey
+  - Gold
+  - Dirty Pour
 available: true
-price: $150
+price: '$155'
 ---
 
-![](img_0565_final.jpg)
+![](IMG_0565.JPG)
 
-![](img_0238_final.jpg)
+![](IMG_0238.JPG)
 
-![](img_0560_final.jpg)
+![](IMG_0560.JPG)
 
-![](img_0571_final.jpg)
+![](IMG_0571.JPG)
+
