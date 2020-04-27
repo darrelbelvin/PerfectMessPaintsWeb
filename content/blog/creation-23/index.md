@@ -4,6 +4,7 @@ date: '2020-01-27'
 thumbnail: IMG_0422.JPG
 description: 
 tags:
+  - 16x20
   - Straight Pour
 available: true
 price: '$155'

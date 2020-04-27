@@ -4,6 +4,7 @@ date: '2020-02-01'
 thumbnail: IMG_0697.JPG
 description: 
 tags:
+  - 8x10
   - Dutch Pour
 available: true
 price: '$40'

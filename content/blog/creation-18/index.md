@@ -4,9 +4,11 @@ date: '2020-01-21'
 thumbnail: IMG_0511.JPG
 description: 
 tags:
+  - 11x14
   - Blue
   - Gold
   - Ring Pour
+  - Series Gilded
 available: true
 price: '$75'
 ---

@@ -4,7 +4,9 @@ date: '2020-01-29'
 thumbnail: IMG_0532.JPG
 description: 
 tags:
+  - 16x20
   - Flip-Cup
+  - Series Coral
 available: true
 price: '$155'
 ---

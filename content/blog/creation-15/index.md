@@ -4,8 +4,10 @@ date: '2020-01-12'
 thumbnail: IMG_0612.JPG
 description: 
 tags:
+  - 11x14
   - Blue
   - Sea
+  - Series Coral
 available: true
 price: '$75'
 ---

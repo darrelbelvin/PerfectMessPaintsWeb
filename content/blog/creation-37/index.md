@@ -4,7 +4,8 @@ date: '2020-03-18'
 thumbnail: IMG_0603.JPG
 description: 
 tags:
-  - 
+  - 16x20
+  - Series Coral
 available: true
 price: '$155'
 ---

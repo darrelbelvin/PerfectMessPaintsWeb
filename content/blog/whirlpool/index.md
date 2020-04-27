@@ -4,7 +4,9 @@ date: '2020-02-28'
 thumbnail: IMG_0711.JPG
 description: 
 tags:
+  - 11x14
   - Ring Pour
+  - Series Coral
 available: true
 price: '$75'
 ---

@@ -4,6 +4,7 @@ date: '2020-01-28'
 thumbnail: IMG_0419.JPG
 description: 
 tags:
+  - 16x20
   - Dirty Pour
 available: true
 price: '$155'

@@ -4,6 +4,7 @@ date: '2020-02-13'
 thumbnail: IMG_0435.JPG
 description: 
 tags:
+  - 16x20
   - Swipe
   - Pink
   - Black

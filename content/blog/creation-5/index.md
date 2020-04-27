@@ -4,7 +4,7 @@ date: '2019-11-23'
 thumbnail: IMG_0729.JPG
 description: 
 tags:
-  - 
+  - 8x10
 available: true
 price: '$40'
 ---

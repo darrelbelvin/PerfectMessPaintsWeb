@@ -4,13 +4,14 @@ date: '2020-02-03'
 thumbnail: IMG_0519.JPG
 description: An awesome collision
 tags:
+  - 16x20
   - Dirty Pour
 available: false
 price: '$155'
 ---
-![](img_0516.jpg)
+![](IMG_0516.JPG)
 
-![](img_0522.jpg)
+![](IMG_0522.JPG)
 
 Baby pictures!!
 

@@ -4,6 +4,7 @@ date: '2020-01-20'
 thumbnail: IMG_0468.JPG
 description: 
 tags:
+  - 11x14
   - Swipe
 available: true
 price: '$75'

@@ -4,6 +4,7 @@ date: '2020-02-10'
 thumbnail: IMG_0569.JPG
 description: This storm is better, it''s lining is golden.
 tags:
+  - 16x20
   - Paynes Grey
   - Gold
   - Dirty Pour

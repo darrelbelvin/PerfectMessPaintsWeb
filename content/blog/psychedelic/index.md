@@ -4,18 +4,21 @@ date: '2020-02-07'
 thumbnail: IMG_0544.JPG
 description: Wild and crazy colors, just like me!
 tags:
+  - 16x20
   - Dirty Pour
 available: true
 price: '$155'
 ---
-![](img_0548.jpg)
 
-![](img_0553.jpg)
+![](IMG_0548.JPG)
 
-![](img_0542.jpg)
+![](IMG_0553.JPG)
+
+![](IMG_0542.JPG)
 
 This one has baby pictures!
 
-![](img_0081.jpg)
+![](IMG_0081.JPG)
 
-![](img_0082.jpg)
+![](IMG_0082.JPG)
+

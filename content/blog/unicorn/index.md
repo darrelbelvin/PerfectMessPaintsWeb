@@ -4,6 +4,7 @@ date: '2019-12-08'
 thumbnail: IMG_0745.JPG
 description: 
 tags:
+  - 16x20
   - Flip-Cup
 available: true
 price: '$155'
