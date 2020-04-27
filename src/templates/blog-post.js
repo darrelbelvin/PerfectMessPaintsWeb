@@ -1,6 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
+import _ from "lodash"
+import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -34,6 +36,22 @@ class BlogPostTemplate extends React.Component {
             <p className="post-content-excerpt">{post.frontmatter.description}</p>
           )}
 
+          {post.frontmatter.tags && (
+            <div className="tag-container">
+              {post.frontmatter.tags.map(tag => {
+                return (
+                  <Link
+                    key={tag}
+                    style={{ textDecoration: "none" }}
+                    to={`/tags/${_.kebabCase(tag)}`}
+                  >
+                    <div className="tag-item">#{tag}</div>
+                  </Link>
+                )
+              })}
+            </div>
+          )}
+          
           {post.frontmatter.thumbnail && (
             <div className="post-content-image">
               <Img
@@ -44,8 +62,7 @@ class BlogPostTemplate extends React.Component {
               />
               <Ribbon available={post.frontmatter.available}
                       price={post.frontmatter.price}
-                      name={post.frontmatter.title}
-                      buy_link={post.frontmatter.buy_link}/>
+                      name={post.frontmatter.title}/>
             </div>
           )}
 
@@ -90,7 +107,7 @@ export const pageQuery = graphql`
         description
         available
         price
-        buy_link
+        tags
         thumbnail {
           childImageSharp {
             fluid(maxWidth: 1360) {

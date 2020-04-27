@@ -54,11 +54,11 @@ const AboutPage = ({ data }, location) => {
               {" "}
               Instagram
             </a>{" "}
-            and check out her
+            {/* and check out her
             <a href={`https://www.etsy.com/shop/${socialLinks.etsy}/`}>
               {" "}
               Etsy shop
-            </a>
+            </a> */}
             !
           </p>
           {/* <p>

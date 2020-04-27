@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { isMobile } from "react-device-detect";
 
 class Ribbon extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class Ribbon extends Component {
         buy_link = this.props.buy_link;
       }
 
-      if (this.state.hover) {
+      if (this.state.hover || isMobile) {
         return (
           <div id={id} className="ribbon ribbon-blue ribbon-top-right">
             <a href={buy_link}>

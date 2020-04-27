@@ -55,14 +55,14 @@ const Layout = props => {
               >
                 Instagram
               </a>
-              <a
+              {/* <a
                 href={`https://www.etsy.com/shop/${social.etsy}/`}
                 title="Etsy"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Etsy
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

@@ -22,8 +22,7 @@ function render(props) {
             ?([<ContentWithImage props={props}/>,
               <Ribbon available={props.node.frontmatter.available}
                 price={props.node.frontmatter.price}
-                name={props.node.frontmatter.title}
-                buy_link={props.node.frontmatter.buy_link}/>])
+                name={props.node.frontmatter.title}/>])
             :(<ContentNoImage props={props}/>)
         }
     </article>

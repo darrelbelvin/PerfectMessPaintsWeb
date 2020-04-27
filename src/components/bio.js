@@ -32,9 +32,9 @@ function Bio() {
                 You should follow her on Instagram
               </a>
               {` `}
-              <a href={`https://www.etsy.com/shop/${social.etsy}/`}>
+              {/* <a href={`https://www.etsy.com/shop/${social.etsy}/`}>
                 And check out her Etsy shop
-              </a>
+              </a> */}
             </p>
           </section>
         )

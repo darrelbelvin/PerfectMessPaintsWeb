@@ -73,7 +73,6 @@ const indexQuery = graphql`
             tags
             available
             price
-            buy_link
             thumbnail {
               childImageSharp {
                 fluid(maxWidth: 1360) {
