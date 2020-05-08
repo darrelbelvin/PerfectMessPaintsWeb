@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, StaticQuery } from "gatsby"
+import { graphql, StaticQuery, Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -20,13 +20,14 @@ const BlogIndex = ({ data }, location) => {
     <Layout title={siteTitle} social={socialLinks}>
       <SEO
         title="Posts"
-        keywords={[`devlog`, `blog`, `gatsby`, `javascript`, `react`]}
+        keywords={[`painting`, `blog`, `pour painting`, `artist`, `perfect mess paints`, `Jenna Belvin`, `Jenna`, `Belvin`]}
       />
       {/* <Bio /> */}
       {data.site.siteMetadata.description && (
         <header className="page-head">
           <h2 className="page-head-title">
-            {data.site.siteMetadata.description}
+            Jenna Belvin's art gallery. Mostly pour paintings, some abstract and other pieces. Available for <Link to='/policies/#commissions'>commissions</Link>!
+            {/* {data.site.siteMetadata.description} */}
           </h2>
         </header>
       )}

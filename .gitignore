@@ -68,3 +68,4 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 gcloud_connection/perfect-mess-paints-website-ba51dd8e2002.json
+.vscode/settings.json

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Link } from "react";
 import { isMobile } from "react-device-detect";
 
 class Ribbon extends Component {
@@ -18,13 +18,14 @@ class Ribbon extends Component {
     const id = 'ribbon' + name;
 
     if(available) {
-      const price = this.props.price
-      var buy_link;
-      if(this.props.buy_link == null || !('buy_link' in this.props) || this.props.buy_link === '') {
-        buy_link = 'mailto:jennabelvin@gmail.com?subject=Purchase request for ' + name + '&body=Hello Jenna,\nI am interested in purchasing your painting named ' + name + '.';
-      } else {
-        buy_link = this.props.buy_link;
-      }
+      const price = this.props.price,
+      buy_link = '/policies/#howtobuy'
+      // var buy_link;
+      // if(this.props.buy_link == null || !('buy_link' in this.props) || this.props.buy_link === '') {
+      //   buy_link = 'mailto:jennabelvin@gmail.com?subject=Purchase request for ' + name + '&body=Hello Jenna,\nI am interested in purchasing your painting named ' + name + '.';
+      // } else {
+      //   buy_link = this.props.buy_link;
+      // }
 
       if (this.state.hover || isMobile) {
         return (
