@@ -2,10 +2,12 @@
 title: Creation 23
 date: '2020-01-27'
 thumbnail: IMG_0422.JPG
-description: 
+description: Christmas anyone?
 tags:
   - 16x20
   - Straight Pour
+  - Red
+  - Green
 available: true
 price: '$155'
 ---

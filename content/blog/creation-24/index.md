@@ -2,9 +2,10 @@
 title: Creation 24
 date: '2020-01-28'
 thumbnail: IMG_0419.JPG
-description: 
+description: I love blue!
 tags:
   - 16x20
+  - Blue
   - Dirty Pour
 available: true
 price: '$155'

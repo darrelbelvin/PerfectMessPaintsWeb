@@ -6,6 +6,7 @@ description:
 tags:
   - 16x20
   - Dutch Pour
+  - Blue
 available: false
 price: '$155'
 ---

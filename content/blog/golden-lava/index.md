@@ -5,6 +5,8 @@ thumbnail: IMG_0625.JPG
 description: 
 tags:
   - 16x20
+  - Blue
+  - Gold
 available: true
 price: '$155'
 ---

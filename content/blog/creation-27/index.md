@@ -6,6 +6,8 @@ description:
 tags:
   - 8x10
   - Dutch Pour
+  - Blue
+  - Gold
 available: true
 price: '$40'
 ---

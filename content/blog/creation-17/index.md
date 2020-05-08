@@ -6,6 +6,8 @@ description:
 tags:
   - 11x14
   - Swipe
+  - Blue
+  - Gold
 available: true
 price: '$75'
 ---

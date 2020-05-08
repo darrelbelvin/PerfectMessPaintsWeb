@@ -6,6 +6,8 @@ description:
 tags:
   - 8x10
   - Swipe
+  - Blue
+  - Lacing
 available: true
 price: '$40'
 ---

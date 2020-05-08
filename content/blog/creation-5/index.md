@@ -5,6 +5,7 @@ thumbnail: IMG_0729.JPG
 description: 
 tags:
   - 8x10
+  - Blue
 available: true
 price: '$40'
 ---

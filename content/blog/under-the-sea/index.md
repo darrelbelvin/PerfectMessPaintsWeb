@@ -5,6 +5,8 @@ thumbnail: IMG_0663.JPG
 description: 
 tags:
   - 16x20
+  - Blue
+  - Sea
   - Series Coral
 available: true
 price: '$155'

@@ -6,6 +6,7 @@ description:
 tags:
   - 16x20
   - Ring Pour
+  - Sea
   - Series Coral
 available: true
 price: '$155'

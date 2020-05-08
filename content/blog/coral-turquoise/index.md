@@ -6,6 +6,7 @@ description:
 tags:
   - 16x20
   - Flip-Cup
+  - Turquoise
   - Series Coral
 available: true
 price: '$155'

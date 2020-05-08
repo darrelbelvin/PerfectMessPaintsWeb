@@ -6,6 +6,8 @@ description:
 tags:
   - 16x20
   - Dutch Pour
+  - Magenta
+  - Blue
 available: true
 price: '$155'
 ---

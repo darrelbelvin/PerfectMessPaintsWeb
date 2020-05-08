@@ -6,6 +6,7 @@ description: Fire-like swirls out of a deep purple Accretion Disk.
 tags:
   - 16x20
   - Straight Pour
+  - Dark
   - Series Accretion Disk
 available: true
 price: '$155'

@@ -6,6 +6,8 @@ description:
 tags:
   - 11x14
   - Ring Pour
+  - Blue
+  - Sea
   - Series Coral
 available: true
 price: '$75'

@@ -6,6 +6,9 @@ description:
 tags:
   - 8x10
   - Dutch Pour
+  - Blue
+  - Purple
+  - Green
 available: true
 price: '$40'
 ---

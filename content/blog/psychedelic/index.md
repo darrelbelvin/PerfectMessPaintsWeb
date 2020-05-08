@@ -6,6 +6,8 @@ description: Wild and crazy colors, just like me!
 tags:
   - 16x20
   - Dirty Pour
+  - Magenta
+  - Gold
 available: true
 price: '$155'
 ---
