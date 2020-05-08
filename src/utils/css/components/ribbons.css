@@ -5,9 +5,9 @@
 
 /* common */
 .ribbon {
-  width: 150px;
+  width: 130px;
   pointer-events: none;
-  height: 150px;
+  height: 130px;
   overflow: hidden;
   position: absolute;
 }
@@ -24,7 +24,7 @@
   position: absolute;
   display: block;
   width: 225px;
-  padding: 15px 0;
+  padding: 10px 0;
   background-color: #2f2f2f;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   color: #f5f5f7;
@@ -36,17 +36,17 @@
 
 .ribbon-blue::before,
 .ribbon-blue::after {
-  border: 5px solid #233d4e;
+  border: 5px solid var(--color-spare1);
 }
 .ribbon-blue span, .ribbon-blue a {
-  background-color: #355d77;
-  color: #f5f5f7;
+  background-color: var(--color-spare1);
+  color: var(--color-base-light);
 }
 
 /* top left*/
 .ribbon-top-left {
-  top: -10px;
-  left: -10px;
+  top: -6px;
+  left: -6px;
 }
 .ribbon-top-left::before,
 .ribbon-top-left::after {
@@ -62,15 +62,15 @@
   left: 0;
 }
 .ribbon-top-left span {
-  right: -25px;
+  right: -37px;
   top: 30px;
   transform: rotate(-45deg);
 }
 
 /* top right*/
 .ribbon-top-right {
-  top: -10px;
-  right: -10px;
+  top: -6px;
+  right: -6px;
 }
 .ribbon-top-right::before,
 .ribbon-top-right::after {
@@ -86,7 +86,7 @@
   right: 0;
 }
 .ribbon-top-right span {
-  left: -25px;
+  left: -37px;
   top: 30px;
   transform: rotate(45deg);
 }
