@@ -8,7 +8,7 @@ tags:
   - Swipe
   - Blue
   - Gold
-available: true
+available: false
 price: '$75'
 ---
 
