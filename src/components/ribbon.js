@@ -1,5 +1,6 @@
-import React, { Component, Link } from "react";
+import React, { Component } from "react";
 import { isMobile } from "react-device-detect";
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 
 class Ribbon extends Component {
   constructor(props) {

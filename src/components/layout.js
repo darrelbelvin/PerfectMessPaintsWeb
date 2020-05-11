@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 
 const Layout = props => {
   const { title, social, children } = props
@@ -8,9 +9,11 @@ const Layout = props => {
     <div className={`site-wrapper ${toggleNav ? `site-head-open` : ``}`}>
       <header className="site-head">
         <div className="site-head-container">
-          <a
+          <a id="menu-button" /* eslint-disable-line jsx-a11y/anchor-is-valid */
+            role="button"
             className="nav-burger"
-            onClick={() => setToggleNav(!toggleNav)}
+            onClick={() => setToggleNav(!toggleNav)} onKeyPress={() => setToggleNav(!toggleNav)}
+            tabIndex={0}
           >
             <div
               className="hamburger hamburger--collapse"
@@ -25,15 +28,9 @@ const Layout = props => {
           </a>
           <nav id="swup" className="site-head-left">
             <ul className="nav" role="menu">
-              {/* <li className="nav-home nav-current" role="menuitem">
-                <Link to={`/`}>Home</Link>
-              </li> */}
               <li className="nav-about" role="menuitem">
                 <Link to={`/about`}>About</Link>
               </li>
-              {/* <li className="nav-elements" role="menuitem">
-                <Link to={`/elements`}>Elements</Link>
-              </li> */}
               <li className="nav-tags" role="menuitem">
                 <Link to={`/tags`}>Tags</Link>
               </li>
