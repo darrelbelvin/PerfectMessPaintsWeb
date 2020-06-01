@@ -6,7 +6,7 @@ import shutil
 import time
 from PIL import Image
 
-pictures_dir = 'D:/Libraries/Pictures/Jenna Paintings/'
+pictures_dir = 'D:/Libraries/Documents/Projects/Jenna Paintings/'
 
 def get_data():
     scope = ['https://spreadsheets.google.com/feeds',
