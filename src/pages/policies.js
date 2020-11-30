@@ -12,8 +12,8 @@ const PoliciesPage = ({ data }, location) => {
   const socialLinks = data.site.siteMetadata.social
 
   const name = "(painting name here)",
-  buy_link = 'mailto:hotmesspaints@gmail.com?subject=Purchase request for ' + name + '&body=Hello Jenna,\nI am interested in purchasing your painting named ' + name + '.',
-  commission_link = 'mailto:hotmesspaints@gmail.com?subject=Commission request&body=Hello Jenna,\nI am interested in commissioning you for a painting.\n' + 
+  buy_link = 'mailto:perfectmesspaints@gmail.com?subject=Purchase request for ' + name + '&body=Hello Jenna,\nI am interested in purchasing your painting named ' + name + '.',
+  commission_link = 'mailto:perfectmesspaints@gmail.com?subject=Commission request&body=Hello Jenna,\nI am interested in commissioning you for a painting.\n' + 
                     'Canvas Size: ____\n' + 
                     'Color Pallet: ____\n' + 
                     'Technique:   ____\n';
@@ -27,7 +27,7 @@ const PoliciesPage = ({ data }, location) => {
           <h2 id="howtobuy">How to Buy My Art</h2>
           <p>
             I am just getting started and am not ready to invest in an e-commerce service. <br/>
-            For now, if you want to buy my art, please email me at <a href={buy_link}>hotmesspaints@gmail.com</a><br/>
+            For now, if you want to buy my art, please email me at <a href={buy_link}>perfectmesspaints@gmail.com</a><br/>
             Once I have your address I can calculate tax/shipping and get you a total price.
           </p>
           <p>
@@ -63,7 +63,7 @@ const PoliciesPage = ({ data }, location) => {
             </ul>
           </p>
           <p>
-            If you want to commission me, please contact me at <a href={commission_link}>hotmesspaints@gmail.com</a> and select your
+            If you want to commission me, please contact me at <a href={commission_link}>perfectmesspaints@gmail.com</a> and select your
             <ul>
               <li>Canvas Size</li>
               <li>Color Palate</li>
