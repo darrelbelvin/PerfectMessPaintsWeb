@@ -31,21 +31,28 @@ const LineItem = props => {
   console.log(item)
 
   return (
-    <div className='row'>
-      {console.log(item)}
-      <Link to={`/product/${item.variant.product.handle}/`} className='col-3'>
-        {variantImage}
-      </Link>
-      <div className='col-9 row'  style={{'align-items': 'center'}}>
-        <h4 className='col-5'>
-          {item.title}
-        </h4>
-        <h5 className='col-2'>
+    <tr>
+      <td className='colcolapse'>
+        <Link to={`/product/${item.variant.product.handle}/`}>
+          {variantImage}
+        </Link>
+      </td>
+      <td>
+        <Link to={`/product/${item.variant.product.handle}/`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
+          <h4>
+            {item.title}
+          </h4>
+        </Link>
+      </td>
+      <td>
+        <p>
           {price}
-        </h5>
+        </p>
+      </td>
+      <td>
         <button onClick={handleRemove}>Remove</button>
-      </div>
-    </div>
+      </td>
+    </tr>
   )
 }
 

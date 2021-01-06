@@ -20,7 +20,6 @@ production stylesheet in assets/built/screen.css using gulp dev
 @import "components/animations.css";
 @import "components/prism.css";
 @import "components/ribbons.css";
-@import "components/cart.css";
 
 /* Main - Theme styles
 /* ---------------------------------------------------------- */

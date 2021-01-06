@@ -8,6 +8,12 @@ table {
     font-size: 0.8em;
 }
 
+@media only screen and (max-width: 900px) {
+    .colcolapse{
+        display: none;
+    }
+}
+
 th {
     color: var(--color-base);
     font-size: 0.9em;
@@ -27,7 +33,7 @@ td:first-child {
 }
 
 tbody tr {
-    border: solid 1px var(--color-border);
+    /*border: solid 1px var(--color-border);*/
     border-left: 0;
     border-right: 0;
 }
@@ -41,7 +47,7 @@ tbody tr:nth-child(2n + 1) {
 }
 
 tbody td {
-    border: solid 1px var(--color-border);
+    /*border: solid 1px var(--color-border);*/
     border-left-width: 0;
     border-top-width: 0;
 }

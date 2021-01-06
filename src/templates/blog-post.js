@@ -103,14 +103,20 @@ const BlogPostTemplate = ( post ) => {
           
           {available && 
             <div className="tag-container">
-              <button
-                type="submit"
-                className="primary"
-                disabled={!available || adding || inCart}
-                onClick={handleAddToCart}
-              >
-                {!inCart? "Add to Cart":"Product is in your cart"}
-              </button>
+              {!inCart?
+                <button
+                  type="submit"
+                  className="primary"
+                  disabled={!available || adding || inCart}
+                  onClick={handleAddToCart}
+                >
+                  Add to Cart
+                </button>
+              :
+                <Link to={`/cart`}>
+                  <button type="button">Go to Cart</button>
+                </Link>
+              }
             </div>
           }
 

@@ -30,24 +30,58 @@ const Cart = () => {
 
   return (
     <div>
-      {lineItems}
-      <hr/>
-      <div className='row centered'>
-        <span className='col-6'/>
-        <h3>Subtotal</h3>
-        <p>$ {checkout.subtotalPrice}</p>
-      </div>
-      <h3>Taxes</h3>
-      <p>$ {checkout.totalTax}</p>
-      <h2>Total</h2>
-      <p>$ {checkout.totalPrice}</p>
-      <br />
-      <button
-        onClick={handleCheckout}
-        disabled={checkout.lineItems.length === 0}
-      >
-        Check out
-      </button>
+      <table>
+        <thead>
+          <tr>
+            <th className='colcolapse'/>
+            <th><h3>Title</h3></th>
+            <th><h3>Price</h3></th>
+            <th/>
+          </tr>
+        </thead>
+        <tbody>
+          {lineItems}
+        </tbody>
+        <tr>
+          <td colspan={4}>
+            <hr/>
+          </td>
+        </tr>
+        <tfoot>
+          <tr style={{'border-bottom': '1px solid #000'}}>
+            <td className='colcolapse'/>
+            <td><h4>Subtotal:</h4></td>
+            <td colspan={2}><p>$ {checkout.subtotalPrice}</p></td>
+          </tr>
+          <tr>
+            <td className='colcolapse'/>
+            <td><h4>Taxes:</h4></td>
+            <td colspan={2}><p>$ {checkout.totalTax}</p></td>
+          </tr>
+          <tr>
+            <td className='colcolapse'/>
+            <td><h3>Total:</h3></td>
+            <td colspan={2}><p>$ {checkout.totalPrice}</p></td>
+          </tr>
+          <tr>
+            <td className='colcolapse'/>
+            <td colspan="2" align='right'>
+              <button className='primary'
+                onClick={handleCheckout}
+                disabled={checkout.lineItems.length === 0}
+              >
+                Check out
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td colspan={4} align='center'>
+              <p>You will be forwarded to perfect-mess-paints.myshopify.com to complete checkout</p>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+      
     </div>
   )
 }
