@@ -1,49 +1,38 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, StaticQuery, Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import PostCard from "../components/postCard"
+import ProductGrid from "../components/productGrid"
 
-class TagPageTemplate extends React.Component {
-  render() {
-    const props = this.props
-    const tag = this.props.pageContext.tag
-    const posts = this.props.data.allMarkdownRemark.edges
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const socialLinks = this.props.data.site.siteMetadata.social
+const TagPageTemplate = (props) => {
+//class TagPageTemplate extends React.Component {
+//  render() {
+  console.log(props)
+  const { data } = props
+  const tag = props.pageContext.tag
 
-    return (
-      <Layout
-        location={this.props.location}
-        title={siteTitle}
-        social={socialLinks}
-      >
-        <SEO
-          // title={`#${tag}`}
-          title={`#${tag.charAt(0).toUpperCase() + tag.slice(1)}`}
-          keywords={[`${tag}`, `blog`, `gatsby`, `javascript`, `react`]}
-        />
-        <header className="tag-page-head">
-          <h1 className="page-head-title">
-            #{tag}({props.data.allMarkdownRemark.totalCount})
-          </h1>
-        </header>
-        <div className="post-feed">
-          {posts.map(({ node }) => {
-            return (
-              <PostCard key={node.fields.slug} node={node} postClass={`post`} />
-            )
-          })}
-        </div>
-      </Layout>
-    )
-  }
+  const siteTitle = data.site.siteMetadata.title
+  const socialLinks = data.site.siteMetadata.social
+
+  return (
+    <>
+      <SEO
+        // title={`#${tag}`}
+        title={`#${tag.charAt(0).toUpperCase() + tag.slice(1)}`}
+        keywords={[`${tag}`, `blog`, `gatsby`, `javascript`, `react`]}
+      />
+      <header className="tag-page-head">
+        <h1 className="page-head-title">
+          #{tag}({props.data.allShopifyProduct.totalCount})
+        </h1>
+      </header>
+      <ProductGrid data={data}/>
+    </>
+  )
 }
 
-export default TagPageTemplate
-
-export const pageQuery = graphql`
+export const query = graphql`
   query PostByTag($tag: String!) {
     site {
       siteMetadata {
@@ -55,30 +44,49 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(
-      filter: { frontmatter: { tags: { in: [$tag] } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
+    allShopifyProduct(filter: {tags: {in: [$tag]}}) {
       totalCount
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-            tags
-            available
-            price
-            thumbnail {
+          id
+          title
+          tags
+          availableForSale
+          handle
+          description
+          descriptionHtml
+          shopifyId
+          createdAt
+          images {
+            id
+            originalSrc
+            localFile {
               childImageSharp {
-                fluid(maxWidth: 1360) {
-                  ...GatsbyImageSharpFluid
+                fluid(maxWidth: 910) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }
+            }
+          }
+          variants {
+            id
+            title
+            price
+            availableForSale
+            shopifyId
+            selectedOptions {
+              name
+              value
+            }
+          }
+          priceRange {
+            minVariantPrice {
+              amount
+              currencyCode
+            }
+            maxVariantPrice {
+              amount
+              currencyCode
             }
           }
         }
@@ -86,3 +94,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default TagPageTemplate

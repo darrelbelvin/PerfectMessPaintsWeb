@@ -9,23 +9,3 @@ local_backend: true
 media_folder: "content/blog/{{slug}}"
 
 site_url: https://hotmesspaint.netlify.com/
-
-collections:
-  - name: pages
-    label: Pages
-    label_singular: "Page"
-    folder: "content/blog"
-    path: "{{slug}}/index"
-    media_folder: ""
-    public folder: ""
-    create: true
-    fields:
-      - { name: title, label: Title }
-      - { name: date, label: Date, widget: date, dateFormat: "YYYY-MM-DD", format: "YYYY-MM-DD" }
-      - { name: thumbnail, label: Thumbnail, widget: file }
-      - { name: description, label: Description, widget: text, default: " " }
-      - { name: tags, label: Tags, required: false, widget: list }
-      - { name: available, label: Available, widget: boolean }
-      - { name: price, label: Price, required: false, hint: "Required if available" }
-      - { name: body, label: Body, widget: markdown }
-    preview_path: "{{slug}}"

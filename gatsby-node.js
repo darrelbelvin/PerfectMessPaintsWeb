@@ -8,52 +8,42 @@ exports.createPages = ({ graphql, actions }) => {
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const tagPage = path.resolve(`./src/templates/tag-page.js`)
   
-  return graphql(
-    `
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                tags
-              }
-            }
-          }
+  return graphql(`
+  {
+    allShopifyProduct {
+      edges {
+        node {
+          handle,
+          tags
         }
       }
-    `
-  ).then(result => {
+    }
+  }
+  `).then(result => {
     if (result.errors) {
       throw result.errors
     }
 
     // Create blog posts pages.
-    const posts = result.data.allMarkdownRemark.edges
+    const posts = result.data.allShopifyProduct.edges
     const tagSet = new Set();
 
-    posts.forEach((post, index) => {
+    posts.forEach(({node}, index) => {
       const previous = index === posts.length - 1 ? null : posts[index + 1].node
       const next = index === 0 ? null : posts[index - 1].node
 
       // Get tags for tags pages.
-      if (post.node.frontmatter.tags) {
-        post.node.frontmatter.tags.forEach(tag => {
+      if (node.tags) {
+        node.tags.forEach(tag => {
           tagSet.add(tag);
         });
       }
 
       createPage({
-        path: post.node.fields.slug,
+        path: `/product/${node.handle}/`,
         component: blogPost,
         context: {
-          slug: post.node.fields.slug,
+          handle: node.handle,
           previous,
           next,
         },
@@ -70,7 +60,6 @@ exports.createPages = ({ graphql, actions }) => {
         }
       });
     });
-
 
     return null
   })

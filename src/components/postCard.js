@@ -4,26 +4,39 @@ import Tags from "./tag"
 import Ribbon from "../components/ribbon"
 
 function render(props) {
+  const {
+    title,
+    variants: [productVariant],
+    priceRange: { minVariantPrice },
+  } = props.node
+
+  const img = props.node.images[0].localFile.childImageSharp.fluid.srcWebp;
+  const available = props.available == 2;
+  const price = Intl.NumberFormat(undefined, {
+    currency: minVariantPrice.currencyCode,
+    minimumFractionDigits: 2,
+    style: 'currency',
+  }).format(productVariant.price)
+
   return (
     <article
       className={`post-card ${props.count % 3 === 0 && `post-card-large`} ${
         props.postClass
-      } ${props.node.frontmatter.thumbnail ? `with-image` : `no-image`}`}
+      } with-image`}
       style={
-        props.node.frontmatter.thumbnail && {
-          backgroundImage: `url(${
-            props.node.frontmatter.thumbnail.childImageSharp.fluid.src
-          })`,
+        {
+          backgroundImage: `url(${img})`,
         }
       }
     >
         {
-          props.node.frontmatter.thumbnail
-            ?([<ContentWithImage props={props}/>,
-              <Ribbon available={props.node.frontmatter.available}
-                price={props.node.frontmatter.price}
-                name={props.node.frontmatter.title}/>])
-            :(<ContentNoImage props={props}/>)
+          [
+            <ContentWithImage props={props}/>,
+            <Ribbon available={available}
+              price={price}
+              name={title}
+            />
+          ]
         }
     </article>
   )
@@ -31,29 +44,36 @@ function render(props) {
 
 class ContentNoImage extends Component {
   render() {
-    const{props}=this.props;
+    const {
+      title,
+      tags,
+      createdAt,
+      description,
+      handle
+    } = this.props.node
+
     return (
       <div className="post-card-content">
         <div>
-        <Tags tags={props.node.frontmatter.tags}/>
+        <Tags tags={tags}/>
         </div>
         <div>
-        <Link to={props.node.fields.slug} className="post-card-link">
+        <Link to={`/product/${handle}/`} className="post-card-link">
           <h2 className="post-card-title">
-            {props.node.frontmatter.title || props.node.fields.slug}
+            {title}
           </h2>
         </Link>
         </div>
         <div className="post-card-date">
-        {props.node.frontmatter.date}
+        {createdAt}
         </div>
         <div className="post-card-body">
-        {props.node.frontmatter.description || props.node.excerpt}
+        {description}
         </div>
         <div>
-        <Link to={props.node.fields.slug} className="post-card-link post-card-readmore">
+        <Link to={`/product/${handle}/`} className="post-card-link post-card-readmore">
           {
-            props.node.frontmatter.description || props.node.excerpt
+            description
               ?("Read more")
               :(null)
           }
@@ -68,10 +88,10 @@ class ContentWithImage extends Component {
   render() {
     const{props}=this.props;
     return (
-      <Link to={props.node.fields.slug} className="post-card-link">
+      <Link to={`/product/${props.node.handle}/`} className="post-card-link">
         <div className="post-card-content">
           <h2 className="post-card-title">
-            {props.node.frontmatter.title || props.node.fields.slug}
+            {props.node.title}
           </h2>
         </div>
       </Link>

@@ -11,8 +11,9 @@ import "../utils/normalize.css"
 import "../utils/css/screen.css"
 
 const TagIndex = ({ data }) => {
+  console.log(data)
   const siteTitle = data.site.siteMetadata.title
-  const tags = data.allMarkdownRemark.distinct
+  const tags = data.allShopifyProduct.distinct
   const socialLinks = data.site.siteMetadata.social
 
   return (
@@ -49,8 +50,8 @@ const indexQuery = graphql`
         }
       }
     }
-    allMarkdownRemark {
-      distinct(field: frontmatter___tags)
+    allShopifyProduct {
+      distinct(field: tags)
     }
   }
 `

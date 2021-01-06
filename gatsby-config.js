@@ -55,6 +55,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-layout`,
     {
       resolve: `gatsby-plugin-postcss`,
       options: {
@@ -84,7 +85,6 @@ module.exports = {
         head: true,
       },
     },
-    `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -95,6 +95,16 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `content/assets/test-icon.png`,
+      },
+    },
+    {
+      resolve: `gatsby-source-shopify`,
+      options: {
+        // The domain name of your Shopify shop.
+        shopName: `perfect-mess-paints`,
+        // The storefront access token
+        accessToken: `44e9dd7e1a024e1f8fd74669fbe05736`,
+        apiVersion: '2020-10',
       },
     },
     `gatsby-plugin-netlify`,

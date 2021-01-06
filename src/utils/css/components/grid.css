@@ -9,6 +9,10 @@
     margin: 0 -1rem;
 }
 
+.centered {
+    align-items: baseline;
+}
+
 .col,
 .col-1,
 .col-2,

@@ -1,44 +1,93 @@
-import React from "react"
+import React, { useState, useContext, useEffect, useCallback } from 'react'
+
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import _ from "lodash"
 import { Link } from "gatsby"
 
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Ribbon from "../components/ribbon"
 
-class BlogPostTemplate extends React.Component {
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
-  render() {
-    const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const socialLinks = this.props.data.site.siteMetadata.social
+import StoreContext from '../context/StoreContext'
+
+const BlogPostTemplate = ( post ) => {
+  console.log(post)
+  const product = post.data.shopifyProduct
+  const {
+    variants: [productVariant],
+    priceRange: { minVariantPrice },
+  } = product
+  const {
+    addVariantToCart,
+    store: { client, adding, checkout },
+  } = useContext(StoreContext)
+
+  const checkInCart = () => {
+    return checkout.lineItems.filter(item => item.variant.id === productVariant.shopifyId).length !== 0;
+  };
+
+  const [available, setAvailable] = useState(false)
+  const [inCart, setInCart] = useState(checkInCart())
+
+  const checkAvailability = useCallback(
+    productId => {
+      client.product.fetch(productId).then(fetchedProduct => {
+        setAvailable(fetchedProduct.variants[0].available)
+      })
+    },
+    [client.product]
+  )
+
+  useEffect(() => {
+    checkAvailability(product.shopifyId)
+  }, [checkAvailability, product.shopifyId])
+
+  useEffect(() => { setInCart(checkInCart()); }, [checkInCart])
+
+  const handleAddToCart = () => {
+    if (!checkInCart()) {
+      addVariantToCart(productVariant.shopifyId, 1)
+    }
+    setInCart(true)
+  }
+
+  const price = Intl.NumberFormat(undefined, {
+    currency: minVariantPrice.currencyCode,
+    minimumFractionDigits: 2,
+    style: 'currency',
+  }).format(productVariant.price)
+
+  // render() {
+  //   console.log(this.props)
+  // const product = this.props.data.shopifyProduct
+  //   console.log(product.images)
+
+    // const customRenderThumb = (children) => 
+    //   children.map((item) => <img src={item.props.thumb}/>)
 
     return (
-      <Layout
-        location={this.props.location}
-        title={siteTitle}
-        social={socialLinks}
-      >
+      <>
         <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
+          title={product.title}
+          description={product.description || product.excerpt}
         />
         <article
-          className={`post-content ${post.frontmatter.thumbnail || `no-image`}`}
+          className={`post-content ${product.thumbnail || `no-image`}`}
         >
           <header className="post-content-header">
-            <h1 className="post-content-title">{post.frontmatter.title}</h1>
+            <h1 className="post-content-title">{product.title}</h1>
           </header>
 
-          {post.frontmatter.description && (
-            <p className="post-content-excerpt">{post.frontmatter.description}</p>
+          {product.description && (
+            <p className="post-content-excerpt">{product.description}</p>
           )}
 
-          {post.frontmatter.tags && (
+          {product.tags && (
             <div className="tag-container">
-              {post.frontmatter.tags.map(tag => {
+              {product.tags.map(tag => {
                 return (
                   <Link
                     key={tag}
@@ -52,66 +101,126 @@ class BlogPostTemplate extends React.Component {
             </div>
           )}
           
-          {post.frontmatter.thumbnail && (
+          {available && 
+            <div className="tag-container">
+              <button
+                type="submit"
+                className="primary"
+                disabled={!available || adding || inCart}
+                onClick={handleAddToCart}
+              >
+                {!inCart? "Add to Cart":"Product is in your cart"}
+              </button>
+            </div>
+          }
+
+          {/* {product.thumbnail && (
             <div className="post-content-image">
               <Img
                 className="kg-image"
                 label='sold'
-                fluid={post.frontmatter.thumbnail.childImageSharp.fluid}
-                alt={post.frontmatter.title}
+                fluid={product.thumbnail.childImageSharp.fluid}
+                alt={product.title}
               />
-              <Ribbon available={post.frontmatter.available}
-                      price={post.frontmatter.price}
-                      name={post.frontmatter.title}/>
+              <Ribbon available={product.available}
+                      price={product.price}
+                      name={product.title}/>
             </div>
-          )}
+          )} */}
 
-          <div
-            className="post-content-body"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
+          {/* <Carousel 
+            dynamicHeight={true}
+            showThumbs={true}
+            renderThumbs = {customRenderThumb}
+            thumbWidth={200}
+          >
+            {product.images.map((img, index) => (
+              <div key={index} thumb={img.localFile.childImageSharp.fluid.src}>
+                <Img
+                  className="kg-image"
+                  label='sold'
+                  fluid={img.localFile.childImageSharp.fluid}
+                  alt={product.title}
+                />
+              </div>
+            ))}
+          </Carousel> */}
 
+          <div className="post-content-image">
+            <Img
+              className="kg-image"
+              label='sold'
+              fluid={product.images[0].localFile.childImageSharp.fluid}
+              alt={product.title}
+            />
+            <Ribbon available={available}
+                    price={price}
+                    name={product.title}/>
+          </div>
+          <div style={{display: "flex"}}>
+            {product.images.map((img, index) => (
+              <Img
+                  className="kg-image"
+                  label='sold'
+                  fluid={img.localFile.childImageSharp.fluid}
+                  alt={product.title}
+                />))
+            }
+          </div>
           <footer className="post-content-footer">
-            {/* There are two options for how we display the byline/author-info.
-        If the post has more than one author, we load a specific template
-        from includes/byline-multiple.hbs, otherwise, we just use the
-        default byline. */}
           </footer>
         </article>
-      </Layout>
+      </>
     )
-  }
+  //}
 }
 
-export default BlogPostTemplate
+//export const query = graphql(oneProduct)
 
-export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
+export const query = graphql`
+  query($handle: String!) {
+    shopifyProduct(handle: { eq: $handle }) {
+      id
+      title
+      handle
+      productType
+      description
+      descriptionHtml
+      shopifyId
+      tags
+      options {
+        id
+        name
+        values
+      }
+      variants {
+        id
         title
-        author
-        social {
-          instagram
-          etsy
+        price
+        availableForSale
+        shopifyId
+        selectedOptions {
+          name
+          value
         }
       }
-    }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
-        available
-        price
-        tags
-        thumbnail {
+      priceRange {
+        minVariantPrice {
+          amount
+          currencyCode
+        }
+        maxVariantPrice {
+          amount
+          currencyCode
+        }
+      }
+      images {
+        originalSrc
+        id
+        localFile {
           childImageSharp {
-            fluid(maxWidth: 1360) {
-              ...GatsbyImageSharpFluid
+            fluid(maxWidth: 910) {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
         }
@@ -119,3 +228,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default BlogPostTemplate

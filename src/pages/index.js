@@ -4,25 +4,26 @@ import { graphql, StaticQuery, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 // import Bio from "../components/bio"
-import PostCard from "../components/postCard"
+import ProductGrid from "../components/productGrid"
 
 // import "../utils/global.scss"
 import "../utils/normalize.css"
 import "../utils/css/screen.css"
+
 //TODO: switch to staticQuery, get rid of comments, remove unnecessary components, export as draft template
-const BlogIndex = ({ data }, location) => {
-  const siteTitle = data.site.siteMetadata.title
-  const socialLinks = data.site.siteMetadata.social
-  const posts = data.allMarkdownRemark.edges
-  let postCounter = 0
+const BlogIndex = (props) => {
+  console.log(props)
+  const { data, pageContext } = props
+  const posts = data.allShopifyProduct.edges
 
   return (
-    <Layout title={siteTitle} social={socialLinks}>
-      <SEO
-        title="Posts"
-        keywords={[`painting`, `blog`, `pour painting`, `artist`, `perfect mess paints`, `Jenna Belvin`, `Jenna`, `Belvin`]}
-      />
-      {/* <Bio /> */}
+    // <Layout title={siteTitle} social={socialLinks}>
+    //   <SEO
+    //     title="Posts"
+    //     keywords={[`painting`, `blog`, `pour painting`, `artist`, `perfect mess paints`, `Jenna Belvin`, `Jenna`, `Belvin`]}
+    //   />
+
+    <>
       {data.site.siteMetadata.description && (
         <header className="page-head">
           <h2 className="page-head-title">
@@ -31,66 +32,76 @@ const BlogIndex = ({ data }, location) => {
           </h2>
         </header>
       )}
-      <div className="post-feed">
-        {posts.map(({ node }) => {
-          postCounter++
-          return (
-            <PostCard
-              key={node.fields.slug}
-              count={postCounter}
-              node={node}
-              postClass={`post`}
-            />
-          )
-        })}
-      </div>
-    </Layout>
+      <ProductGrid data={data}/>
+    </>
+    // </Layout>
   )
 }
 
-const indexQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-        description
-        social {
-          instagram
-          etsy
-        }
+const productQuery = graphql`
+query {
+  site {
+    siteMetadata {
+      title
+      description
+      social {
+        instagram
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM D, YYYY")
-            title
-            description
-            tags
-            available
-            price
-            thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 1360) {
-                  ...GatsbyImageSharpFluid
-                }
+  }
+  allShopifyProduct(sort: { fields: [createdAt], order: DESC }) {
+    edges {
+      node {
+        id
+        title
+        tags
+        availableForSale
+        handle
+        description
+        descriptionHtml
+        shopifyId
+        createdAt
+        images {
+          id
+          originalSrc
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 910) {
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
             }
+          }
+        }
+        variants {
+          id
+          title
+          price
+          availableForSale
+          shopifyId
+          selectedOptions {
+            name
+            value
+          }
+        }
+        priceRange {
+          minVariantPrice {
+            amount
+            currencyCode
+          }
+          maxVariantPrice {
+            amount
+            currencyCode
           }
         }
       }
     }
   }
+}
 `
 
 export default props => (
   <StaticQuery
-    query={indexQuery}
+    query={productQuery}
     render={data => (
       <BlogIndex location={props.location} props data={data} {...props} />
     )}

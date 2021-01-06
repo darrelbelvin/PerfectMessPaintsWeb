@@ -2,7 +2,6 @@ import React from "react"
 import { graphql, StaticQuery } from "gatsby"
 import Img from "gatsby-image"
 
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import "../utils/normalize.css"
@@ -13,7 +12,7 @@ const AboutPage = ({ data }, location) => {
   const socialLinks = data.site.siteMetadata.social
 
   return (
-    <Layout title={siteTitle} social={socialLinks}>
+    <>
       <SEO
         title="About"
         keywords={[
@@ -79,7 +78,7 @@ const AboutPage = ({ data }, location) => {
           </p> */}
         </div>
       </article>
-    </Layout>
+    </>
   )
 }
 
