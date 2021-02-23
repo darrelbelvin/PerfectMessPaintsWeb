@@ -113,9 +113,11 @@ const BlogPostTemplate = ( post ) => {
                   Add to Cart
                 </button>
               :
-                <Link to={`/cart`}>
-                  <button type="button">Go to Cart</button>
-                </Link>
+                <p style={{'white-space': 'break-spaces'}}>
+                  This product is in your cart.   <Link to={`/cart`}>
+                    <button type="button">Go to Cart</button>
+                  </Link>
+                </p>
               }
             </div>
           }
