@@ -1,7 +1,6 @@
 import React from "react"
-import { graphql, StaticQuery, Link } from "gatsby"
+import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 import ProductGrid from "../components/productGrid"
 
@@ -11,9 +10,6 @@ const TagPageTemplate = (props) => {
   console.log(props)
   const { data } = props
   const tag = props.pageContext.tag
-
-  const siteTitle = data.site.siteMetadata.title
-  const socialLinks = data.site.siteMetadata.social
 
   return (
     <>

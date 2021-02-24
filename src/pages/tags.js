@@ -3,7 +3,6 @@ import _ from "lodash"
 import { Link } from "gatsby"
 import { graphql, StaticQuery } from "gatsby"
 
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 // import "../utils/global.scss"
@@ -11,13 +10,10 @@ import "../utils/normalize.css"
 import "../utils/css/screen.css"
 
 const TagIndex = ({ data }) => {
-  console.log(data)
-  const siteTitle = data.site.siteMetadata.title
   const tags = data.allShopifyProduct.distinct
-  const socialLinks = data.site.siteMetadata.social
 
   return (
-    <Layout title={siteTitle} social={socialLinks}>
+    <>
       <SEO title="Tags" />
       <header className="tag-page-head">
         <h1 className="page-head-title">Tags({tags.length})</h1>
@@ -35,7 +31,7 @@ const TagIndex = ({ data }) => {
           )
         })}
       </div>
-    </Layout>
+    </>
   )
 }
 

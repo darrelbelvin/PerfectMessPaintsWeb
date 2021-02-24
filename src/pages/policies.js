@@ -1,15 +1,12 @@
 import React from "react"
 import { graphql, StaticQuery } from "gatsby"
 
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import "../utils/normalize.css"
 import "../utils/css/screen.css"
 
 const PoliciesPage = ({ data }, location) => {
-  const siteTitle = data.site.siteMetadata.title
-  const socialLinks = data.site.siteMetadata.social
 
   const name = "(painting name here)",
   buy_link = 'mailto:perfectmesspaints@gmail.com?subject=Purchase request for ' + name + '&body=Hello Jenna,\nI am interested in purchasing your painting named ' + name + '.',
@@ -19,7 +16,7 @@ const PoliciesPage = ({ data }, location) => {
                     'Technique:   ____\n';
 
   return (
-    <Layout title={siteTitle} social={socialLinks}>
+    <>
       <SEO title="Policies" />
 
       <article className="post-content page-template no-image">
@@ -73,7 +70,7 @@ const PoliciesPage = ({ data }, location) => {
           </p>
         </div>
       </article>
-    </Layout>
+    </>
   )
 }
 

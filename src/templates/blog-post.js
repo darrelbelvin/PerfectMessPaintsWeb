@@ -8,9 +8,6 @@ import { Link } from "gatsby"
 import SEO from "../components/seo"
 import Ribbon from "../components/ribbon"
 
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
-
 import StoreContext from '../context/StoreContext'
 
 const BlogPostTemplate = ( post ) => {
@@ -168,6 +165,7 @@ const BlogPostTemplate = ( post ) => {
           <div style={{display: "flex"}}>
             {product.images.map((img, index) => (
               <Img
+                  onClick={}
                   className="kg-image"
                   label='sold'
                   fluid={img.localFile.childImageSharp.fluid}

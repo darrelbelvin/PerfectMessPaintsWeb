@@ -11,7 +11,7 @@ function render(props) {
   } = props.node
 
   const img = props.node.images[0].localFile.childImageSharp.fluid.srcWebp;
-  const available = props.available == 2;
+  const available = props.available === 2;
   const price = Intl.NumberFormat(undefined, {
     currency: minVariantPrice.currencyCode,
     minimumFractionDigits: 2,

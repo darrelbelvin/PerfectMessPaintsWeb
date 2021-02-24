@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useCallback } from 'react'
+import React, { useContext } from 'react'
 
 import Img from "gatsby-image"
 import _ from "lodash"

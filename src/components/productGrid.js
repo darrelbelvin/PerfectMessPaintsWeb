@@ -27,16 +27,16 @@ const ProductGrid = ({data}) => {
         setAvailable(available)
       })
     },
-    [client.product]
+    [client.product, available]
   )
 
   useEffect(() => {
     for (var id in available) {
-      if (available[id] == 1) {
+      if (available[id] === 1) {
         checkAvailability(id)
       }
     }
-  }, [checkAvailability, Object.keys(available)[1]])
+  }, [checkAvailability, available])//Object.keys(available)[1]])
 
   return (
     <div className="post-feed">
