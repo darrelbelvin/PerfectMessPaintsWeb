@@ -109,3 +109,10 @@ button.primary:hover,
 .button.primary:hover {
         background-color: color(var(--color-primary) l(-10%));
     }
+
+.previewButton {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+}

@@ -10,6 +10,9 @@ import Ribbon from "../components/ribbon"
 
 import StoreContext from '../context/StoreContext'
 
+// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+// import { Carousel } from 'react-responsive-carousel';
+
 const BlogPostTemplate = ( post ) => {
   console.log(post)
   const product = post.data.shopifyProduct
@@ -21,6 +24,8 @@ const BlogPostTemplate = ( post ) => {
     addVariantToCart,
     store: { client, adding, checkout },
   } = useContext(StoreContext)
+
+  const [imageId, setImageID] = useState(0);
 
   const checkInCart = () => {
     return checkout.lineItems.filter(item => item.variant.id === productVariant.shopifyId).length !== 0;
@@ -72,7 +77,7 @@ const BlogPostTemplate = ( post ) => {
           description={product.description || product.excerpt}
         />
         <article
-          className={`post-content ${product.thumbnail || `no-image`}`}
+          className={`post-content`}
         >
           <header className="post-content-header">
             <h1 className="post-content-title">{product.title}</h1>
@@ -132,45 +137,58 @@ const BlogPostTemplate = ( post ) => {
                       name={product.title}/>
             </div>
           )} */}
-
-          {/* <Carousel 
-            dynamicHeight={true}
-            showThumbs={true}
-            renderThumbs = {customRenderThumb}
-            thumbWidth={200}
+          {/* <div className="post-content-image">
+          <Carousel
+            swipeable={true}
+            showThumbs={false}
           >
             {product.images.map((img, index) => (
-              <div key={index} thumb={img.localFile.childImageSharp.fluid.src}>
                 <Img
+                key={index}
                   className="kg-image"
                   label='sold'
                   fluid={img.localFile.childImageSharp.fluid}
                   alt={product.title}
                 />
-              </div>
             ))}
-          </Carousel> */}
+          </Carousel>
+          <Ribbon available={available}
+                    price={price}
+                    name={product.title}/>
+          </div> */}
 
           <div className="post-content-image">
             <Img
               className="kg-image"
               label='sold'
-              fluid={product.images[0].localFile.childImageSharp.fluid}
+              fluid={product.images[imageId].localFile.childImageSharp.fluid}
               alt={product.title}
+              aspectRatio={1}
             />
             <Ribbon available={available}
                     price={price}
                     name={product.title}/>
           </div>
-          <div style={{display: "flex"}}>
+          <div style={{
+                        display: "grid",
+                        gridTemplateColumns: `repeat(${product.images.length}, 1fr)`,
+                        gridGap: "5px"
+                      }}>
             {product.images.map((img, index) => (
-              <Img
-                  onClick={}
+              <button
+                className="previewButton"
+                key={index}
+                onClick={() => {setImageID(index)}
+                }
+              >
+                <Img
                   className="kg-image"
                   label='sold'
-                  fluid={img.localFile.childImageSharp.fluid}
+                  fluid={{ ...img.localFile.childImageSharp.fluid, aspectRatio: 1}}
                   alt={product.title}
-                />))
+                />
+              </button>
+              ))
             }
           </div>
           <footer className="post-content-footer">
