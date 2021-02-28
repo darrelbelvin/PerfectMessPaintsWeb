@@ -2,18 +2,14 @@ import React from "react"
 import { graphql, StaticQuery } from "gatsby"
 import Img from "gatsby-image"
 
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import "../utils/normalize.css"
 import "../utils/css/screen.css"
 
 const ElementsPage = ({ data }, location) => {
-  const siteTitle = data.site.siteMetadata.title
-  const socialLinks = data.site.siteMetadata.social
-
   return (
-    <Layout title={siteTitle} social={socialLinks}>
+    <>
       <SEO title="Elements" />
 
       <article className="post-content page-template no-image">
@@ -532,7 +528,7 @@ const ElementsPage = ({ data }, location) => {
           </div>
         </div>
       </article>
-    </Layout>
+    </>
   )
 }
 

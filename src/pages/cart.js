@@ -47,31 +47,31 @@ const Cart = () => {
         </thead>
         <tbody>
           {lineItems}
-        </tbody>
         <tr>
-          <td colspan={4}>
+          <td colSpan={4}>
             <hr/>
           </td>
         </tr>
+        </tbody>
         <tfoot>
-          <tr style={{'border-bottom': '1px solid #000'}}>
+          <tr style={{'borderBottom': '1px solid #000'}}>
             <td className='colcolapse'/>
             <td><h4>Subtotal:</h4></td>
-            <td colspan={2}><p>$ {checkout.subtotalPrice}</p></td>
+            <td colSpan={2}><p>$ {checkout.subtotalPrice}</p></td>
           </tr>
           <tr>
             <td className='colcolapse'/>
             <td><h4>Taxes:</h4></td>
-            <td colspan={2}><p>$ {checkout.totalTax}</p></td>
+            <td colSpan={2}><p>$ {checkout.totalTax}</p></td>
           </tr>
           <tr>
             <td className='colcolapse'/>
             <td><h3>Total:</h3></td>
-            <td colspan={2}><p>$ {checkout.totalPrice}</p></td>
+            <td colSpan={2}><p>$ {checkout.totalPrice}</p></td>
           </tr>
           <tr>
             <td className='colcolapse'/>
-            <td colspan="2" align='right'>
+            <td colSpan="2" align='right'>
               <button className='primary'
                 onClick={handleCheckout}
                 disabled={checkout.lineItems.length === 0}
@@ -81,7 +81,7 @@ const Cart = () => {
             </td>
           </tr>
           <tr>
-            <td colspan={4} align='center'>
+            <td colSpan={4} align='center'>
               <p>You will be forwarded to perfect-mess-paints.myshopify.com to complete checkout</p>
             </td>
           </tr>

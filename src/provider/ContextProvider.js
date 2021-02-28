@@ -132,7 +132,6 @@ const ContextProvider = ({ children }) => {
         storeItemAvailability: (shopifyId, available) => {
           storedAvailability[shopifyId] = available 
           setAvailability(storedAvailability)
-          console.log([shopifyId, available])
         }
       }}
     >

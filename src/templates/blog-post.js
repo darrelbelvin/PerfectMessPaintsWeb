@@ -97,7 +97,7 @@ const BlogPostTemplate = ( post ) => {
         {available && 
           <div className="tag-container">
             {!inCart?
-              <h5 style={{'whiteSpace': 'break-spaces', 'textAlign': 'center'}}>
+              <h5 style={{'whiteSpace': 'break-spaces'}}>
                 {product.title} is available for {price}  <button
                   type="submit"
                   className="primary"
@@ -108,11 +108,11 @@ const BlogPostTemplate = ( post ) => {
                 </button>
               </h5>
             :
-              <p style={{'white-space': 'break-spaces'}}>
-                {product.title} is in your cart.   <Link to={`/cart`}>
+              <h5 style={{'whiteSpace': 'break-spaces'}}>
+                {product.title} is in your cart.  <Link to={`/cart`}>
                   <button type="button">Go to Cart</button>
                 </Link>
-              </p>
+              </h5>
             }
           </div>
         }
