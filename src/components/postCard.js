@@ -12,6 +12,7 @@ function render(props) {
 
   const img = props.node.images[0].localFile.childImageSharp.fluid.srcWebp;
   const available = props.available === 2;
+  const checked = props.available !== 1;
   const price = Intl.NumberFormat(undefined, {
     currency: minVariantPrice.currencyCode,
     minimumFractionDigits: 2,
@@ -32,10 +33,11 @@ function render(props) {
         {
           [
             <ContentWithImage props={props}/>,
-            <Ribbon available={available}
-              price={price}
-              name={title}
-            />
+              checked &&
+              <Ribbon available={available}
+                price={price}
+                name={title}
+              />
           ]
         }
     </article>

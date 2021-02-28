@@ -6,15 +6,11 @@ import _ from "lodash"
 import { Link } from "gatsby"
 
 import SEO from "../components/seo"
-import Ribbon from "../components/ribbon"
 
 import StoreContext from '../context/StoreContext'
 
-// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-// import { Carousel } from 'react-responsive-carousel';
 
 const BlogPostTemplate = ( post ) => {
-  console.log(post)
   const product = post.data.shopifyProduct
   const {
     variants: [productVariant],
@@ -62,51 +58,44 @@ const BlogPostTemplate = ( post ) => {
     style: 'currency',
   }).format(productVariant.price)
 
-  // render() {
-  //   console.log(this.props)
-  // const product = this.props.data.shopifyProduct
-  //   console.log(product.images)
+  return (
+    <>
+      <SEO
+        title={product.title}
+        description={product.description || product.excerpt}
+      />
+      <article
+        className={`post-content`}
+      >
+        <header className="post-content-header">
+          <h1 className="post-content-title">{product.title}</h1>
+        </header>
 
-    // const customRenderThumb = (children) => 
-    //   children.map((item) => <img src={item.props.thumb}/>)
+        {product.description && (
+          <p className="post-content-excerpt">{product.description}</p>
+        )}
 
-    return (
-      <>
-        <SEO
-          title={product.title}
-          description={product.description || product.excerpt}
-        />
-        <article
-          className={`post-content`}
-        >
-          <header className="post-content-header">
-            <h1 className="post-content-title">{product.title}</h1>
-          </header>
-
-          {product.description && (
-            <p className="post-content-excerpt">{product.description}</p>
-          )}
-
-          {product.tags && (
-            <div className="tag-container">
-              {product.tags.map(tag => {
-                return (
-                  <Link
-                    key={tag}
-                    style={{ textDecoration: "none" }}
-                    to={`/tags/${_.kebabCase(tag)}`}
-                  >
-                    <div className="tag-item">#{tag}</div>
-                  </Link>
-                )
-              })}
-            </div>
-          )}
-          
-          {available && 
-            <div className="tag-container">
-              {!inCart?
-                <button
+        {product.tags && (
+          <div className="tag-container">
+            {product.tags.map(tag => {
+              return (
+                <Link
+                  key={tag}
+                  style={{ textDecoration: "none" }}
+                  to={`/tags/${_.kebabCase(tag)}`}
+                >
+                  <div className="tag-item">#{tag}</div>
+                </Link>
+              )
+            })}
+          </div>
+        )}
+        
+        {available && 
+          <div className="tag-container">
+            {!inCart?
+              <h5 style={{'white-space': 'break-spaces', 'text-align': 'center'}}>
+                {product.title} is available for {price}  <button
                   type="submit"
                   className="primary"
                   disabled={!available || adding || inCart}
@@ -114,92 +103,50 @@ const BlogPostTemplate = ( post ) => {
                 >
                   Add to Cart
                 </button>
-              :
-                <p style={{'white-space': 'break-spaces'}}>
-                  This product is in your cart.   <Link to={`/cart`}>
-                    <button type="button">Go to Cart</button>
-                  </Link>
-                </p>
-              }
-            </div>
-          }
-
-          {/* {product.thumbnail && (
-            <div className="post-content-image">
-              <Img
-                className="kg-image"
-                label='sold'
-                fluid={product.thumbnail.childImageSharp.fluid}
-                alt={product.title}
-              />
-              <Ribbon available={product.available}
-                      price={product.price}
-                      name={product.title}/>
-            </div>
-          )} */}
-          {/* <div className="post-content-image">
-          <Carousel
-            swipeable={true}
-            showThumbs={false}
-          >
-            {product.images.map((img, index) => (
-                <Img
-                key={index}
-                  className="kg-image"
-                  label='sold'
-                  fluid={img.localFile.childImageSharp.fluid}
-                  alt={product.title}
-                />
-            ))}
-          </Carousel>
-          <Ribbon available={available}
-                    price={price}
-                    name={product.title}/>
-          </div> */}
-
-          <div className="post-content-image">
-            <Img
-              className="kg-image"
-              label='sold'
-              fluid={product.images[imageId].localFile.childImageSharp.fluid}
-              alt={product.title}
-              aspectRatio={1}
-            />
-            <Ribbon available={available}
-                    price={price}
-                    name={product.title}/>
-          </div>
-          <div style={{
-                        display: "grid",
-                        gridTemplateColumns: `repeat(${product.images.length}, 1fr)`,
-                        gridGap: "5px"
-                      }}>
-            {product.images.map((img, index) => (
-              <button
-                className="previewButton"
-                key={index}
-                onClick={() => {setImageID(index)}
-                }
-              >
-                <Img
-                  className="kg-image"
-                  label='sold'
-                  fluid={{ ...img.localFile.childImageSharp.fluid, aspectRatio: 1}}
-                  alt={product.title}
-                />
-              </button>
-              ))
+              </h5>
+            :
+              <p style={{'white-space': 'break-spaces'}}>
+                {product.title} is in your cart.   <Link to={`/cart`}>
+                  <button type="button">Go to Cart</button>
+                </Link>
+              </p>
             }
           </div>
-          <footer className="post-content-footer">
-          </footer>
-        </article>
-      </>
-    )
-  //}
-}
+        }
 
-//export const query = graphql(oneProduct)
+        <Img
+          className="post-content-image"
+          fluid={product.images[imageId].localFile.childImageSharp.fluid}
+          alt={product.title}
+          style={{maxHeight: '65vh'}}
+          imgStyle={{objectFit: 'contain'}}
+        />
+
+        <div style={{
+                      display: "grid",
+                      gridTemplateColumns: `repeat(${product.images.length}, 1fr)`,
+                      gridGap: "5px"
+                    }}>
+          {product.images.map((img, index) => (
+            <div
+              className="previewButton"
+              key={index}
+              role='button'
+              onClick={() => {setImageID(index)}
+              }
+            >
+              <Img
+                fluid={{ ...img.localFile.childImageSharp.fluid, aspectRatio: 1}}
+                alt={product.title}
+              />
+            </div>
+            ))
+          }
+        </div>
+      </article>
+    </>
+  )
+}
 
 export const query = graphql`
   query($handle: String!) {
