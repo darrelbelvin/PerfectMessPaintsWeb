@@ -8,9 +8,7 @@ import "../utils/css/screen.css"
 
 const PoliciesPage = ({ data }, location) => {
 
-  const name = "(painting name here)",
-  buy_link = 'mailto:perfectmesspaints@gmail.com?subject=Purchase request for ' + name + '&body=Hello Jenna,\nI am interested in purchasing your painting named ' + name + '.',
-  commission_link = 'mailto:perfectmesspaints@gmail.com?subject=Commission request&body=Hello Jenna,\nI am interested in commissioning you for a painting.\n' + 
+  const commission_link = 'mailto:perfectmesspaints@gmail.com?subject=Commission request&body=Hello Jenna,\nI am interested in commissioning you for a painting.\n' + 
                     'Canvas Size: ____\n' + 
                     'Color Pallet: ____\n' + 
                     'Technique:   ____\n';
@@ -23,24 +21,7 @@ const PoliciesPage = ({ data }, location) => {
         <div className="post-content-body">
           <h2 id="howtobuy">How to Buy My Art</h2>
           <p>
-            I am just getting started and am not ready to invest in an e-commerce service. <br/>
-            For now, if you want to buy my art, please email me at <a href={buy_link}>perfectmesspaints@gmail.com</a><br/>
-            Once I have your address I can calculate tax/shipping and get you a total price.
-          </p>
-          <p>
-            Payment methods I accept:
-            <ul>
-              <li>PayPal</li>
-              <li>Venmo</li>
-              <li>Cash App</li>
-              <li>Actual Cash</li>
-            </ul>
-            No checks, so please don't ask!
-          </p>
-          <hr />
-          <h2 id="returns">Return Policy</h2>
-          <p>
-            All sales are final. No returns or exchanges will be accepted at this time.
+            Any paintings that are available to buy will have an "Add to Cart" button on their page. Once you're ready to check out, go to your cart and click the check out button. This will take you to perfect-mess-paints.myshopify.com to complete your purchase. I will typically ship your painting within three business days.
           </p>
           <hr />
           <h2 id="commissions">Commissions Policy</h2>

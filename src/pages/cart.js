@@ -1,11 +1,9 @@
 import React, { useContext } from 'react'
 
-import Img from "gatsby-image"
-import _ from "lodash"
-import { Link } from "gatsby"
-
 import StoreContext from '../context/StoreContext'
 import LineItem from '../components/lineItem'
+
+/* eslint-disable jsx-a11y/control-has-associated-label */
 
 const Cart = () => {
   const {
@@ -15,6 +13,14 @@ const Cart = () => {
 
   const handleCheckout = () => {
     window.open(checkout.webUrl)
+  }
+
+  if(checkout.lineItems.length === 0) {
+    return(
+      <h4>
+        Your shopping cart is empty. Go add some paintings to your cart!
+      </h4>
+    )
   }
 
   //ensure that nothing has been double added
