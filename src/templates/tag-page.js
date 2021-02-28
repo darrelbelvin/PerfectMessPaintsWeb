@@ -5,9 +5,6 @@ import SEO from "../components/seo"
 import ProductGrid from "../components/productGrid"
 
 const TagPageTemplate = (props) => {
-//class TagPageTemplate extends React.Component {
-//  render() {
-  console.log(props)
   const { data } = props
   const tag = props.pageContext.tag
 

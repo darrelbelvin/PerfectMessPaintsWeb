@@ -1,8 +1,7 @@
 import React from "react"
 import { graphql, StaticQuery, Link } from "gatsby"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+// import SEO from "../components/seo"
 // import Bio from "../components/bio"
 import ProductGrid from "../components/productGrid"
 
@@ -12,12 +11,9 @@ import "../utils/css/screen.css"
 
 //TODO: switch to staticQuery, get rid of comments, remove unnecessary components, export as draft template
 const BlogIndex = (props) => {
-  console.log(props)
-  const { data, pageContext } = props
-  const posts = data.allShopifyProduct.edges
+  const { data } = props
 
   return (
-    // <Layout title={siteTitle} social={socialLinks}>
     //   <SEO
     //     title="Posts"
     //     keywords={[`painting`, `blog`, `pour painting`, `artist`, `perfect mess paints`, `Jenna Belvin`, `Jenna`, `Belvin`]}
@@ -28,13 +24,11 @@ const BlogIndex = (props) => {
         <header className="page-head">
           <h2 className="page-head-title">
             Jenna Belvin's art gallery. Mostly pour paintings, some abstract and other pieces. Available for <Link to='/policies/#commissions'>commissions</Link>!
-            {/* {data.site.siteMetadata.description} */}
           </h2>
         </header>
       )}
       <ProductGrid data={data}/>
     </>
-    // </Layout>
   )
 }
 

@@ -28,8 +28,6 @@ const LineItem = props => {
     style: 'currency',
   }).format(item.variant.priceV2.amount)
 
-  console.log(item)
-
   return (
     <tr>
       <td className='colcolapse'>

@@ -22,7 +22,10 @@ const ContextProvider = ({ children }) => {
   }
 
   const [store, updateStore] = useState(initialStoreState)
-  let isRemoved = false
+  
+  const [isRemoved, setIsRemoved] = useState(false)
+
+  // const [storedAvailability, setAvailability] = useState({})
 
   useEffect(() => {
     const initializeCheckout = async () => {
@@ -65,11 +68,11 @@ const ContextProvider = ({ children }) => {
     }
 
     initializeCheckout()
-  }, [store.client.checkout])
+  }, [store.client.checkout, isRemoved])
 
   useEffect(
     () => () => {
-      isRemoved = true
+      setIsRemoved(true)
     },
     []
   )
@@ -125,6 +128,8 @@ const ContextProvider = ({ children }) => {
               })
             })
         },
+        // storedAvailability,
+        // setItemAvailability: ()
       }}
     >
       {children}

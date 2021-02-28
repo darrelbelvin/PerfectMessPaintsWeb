@@ -8,7 +8,6 @@ import "../utils/normalize.css"
 import "../utils/css/screen.css"
 
 const AboutPage = ({ data }, location) => {
-  const siteTitle = data.site.siteMetadata.title
   const socialLinks = data.site.siteMetadata.social
 
   return (
@@ -60,22 +59,6 @@ const AboutPage = ({ data }, location) => {
             </a> */}
             !
           </p>
-          {/* <p>
-            Both post and page templates are light and minimal, with all the
-            focus on the content while the design of the theme gets out of the
-            way. Beneath the hood, London enjoys the full power of the{" "}
-            <a href="https://docs.ghost.org/api/handlebars-themes/">
-              Ghost Handlebars Theme API
-            </a>{" "}
-            to provide limitless customisation options and dynamic styles.
-          </p>
-          <p>
-            Don't forget to check out the{" "}
-            <a href="https://docs.ghost.org/integrations/">
-              Ghost Integrations Directory
-            </a>{" "}
-            for more ways to integrate Ghost with your favourite services.
-          </p> */}
         </div>
       </article>
     </>

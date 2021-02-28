@@ -19,23 +19,14 @@ class Ribbon extends Component {
     const id = 'ribbon' + name;
 
     if(available) {
-      const price = this.props.price,
-      buy_link = '/policies/#howtobuy'
-      // var buy_link;
-      // if(this.props.buy_link == null || !('buy_link' in this.props) || this.props.buy_link === '') {
-      //   buy_link = 'mailto:jennabelvin@gmail.com?subject=Purchase request for ' + name + '&body=Hello Jenna,\nI am interested in purchasing your painting named ' + name + '.';
-      // } else {
-      //   buy_link = this.props.buy_link;
-      // }
+      const price = this.props.price
 
       if (this.state.hover || isMobile) {
         return (
           <div id={id} className="ribbon ribbon-blue ribbon-top-right">
-            <a href={buy_link}>
-              <span onMouseEnter={() => this.setState({hover: true})} onMouseLeave={() => this.setState({hover: false})} style={{textDecoration: 'underline'}}>
-                {price}
-              </span>
-            </a>
+            <span onMouseEnter={() => this.setState({hover: true})} onMouseLeave={() => this.setState({hover: false})} style={{textDecoration: 'underline'}}>
+              {price}
+            </span>
           </div>
         )
       } else {

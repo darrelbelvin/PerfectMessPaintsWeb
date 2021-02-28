@@ -5,7 +5,7 @@ import ContextProvider from '../provider/ContextProvider'
 
 
 const Layout = props => {
-  const { title, social, children } = props
+  const { title, children } = props
   const [toggleNav, setToggleNav] = React.useState(false)
   return (
     <ContextProvider>

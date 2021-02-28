@@ -4,7 +4,6 @@ import PostCard from "./postCard"
 
 import StoreContext from '../context/StoreContext'
 
-// import "../utils/global.scss"
 import "../utils/normalize.css"
 import "../utils/css/screen.css"
 
@@ -12,12 +11,15 @@ const ProductGrid = ({data}) => {
   const posts = data.allShopifyProduct.edges
 
   const {
-    store: { client },
+    store: { client }
+    // storedAvailability
   } = useContext(StoreContext)
 
   let postCounter = 0
 
-  const initAvailable = Object.assign({}, ...posts.map((p) => ({[p.node.shopifyId]: p.node.availableForSale ? 1 : 0})))
+  const initAvailable = Object.assign({}, ...posts.map((p) => (
+    {
+      [p.node.shopifyId]: p.node.availableForSale ? 1 : 0})))
   const [available, setAvailable] = useState(initAvailable)
 
   const checkAvailability = useCallback(
@@ -36,7 +38,7 @@ const ProductGrid = ({data}) => {
         checkAvailability(id)
       }
     }
-  }, [checkAvailability, available])//Object.keys(available)[1]])
+  }, [checkAvailability, available])
 
   return (
     <div className="post-feed">

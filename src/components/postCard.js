@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "gatsby"
-import Tags from "./tag"
+// import Tags from "./tag"
 import Ribbon from "../components/ribbon"
 
 function render(props) {
@@ -30,61 +30,59 @@ function render(props) {
         }
       }
     >
-        {
-          [
-            <ContentWithImage props={props}/>,
-              checked &&
-              <Ribbon available={available}
-                price={price}
-                name={title}
-              />
-          ]
-        }
+      <ContentWithImage props={props}/>
+      {
+        checked &&
+        <Ribbon available={available}
+          price={price}
+          name={title}
+        />
+      }
     </article>
   )
 }
 
-class ContentNoImage extends Component {
-  render() {
-    const {
-      title,
-      tags,
-      createdAt,
-      description,
-      handle
-    } = this.props.node
+// class ContentNoImage extends Component {
+//   render() {
+//     const {
+//       title,
+//       tags,
+//       createdAt,
+//       description,
+//       handle
+//     } = this.props.node
 
-    return (
-      <div className="post-card-content">
-        <div>
-        <Tags tags={tags}/>
-        </div>
-        <div>
-        <Link to={`/product/${handle}/`} className="post-card-link">
-          <h2 className="post-card-title">
-            {title}
-          </h2>
-        </Link>
-        </div>
-        <div className="post-card-date">
-        {createdAt}
-        </div>
-        <div className="post-card-body">
-        {description}
-        </div>
-        <div>
-        <Link to={`/product/${handle}/`} className="post-card-link post-card-readmore">
-          {
-            description
-              ?("Read more")
-              :(null)
-          }
-        </Link>
-        </div>
-      </div>
-    );
-  }
-}
+//     return (
+//       <div className="post-card-content">
+//         <div>
+//         <Tags tags={tags}/>
+//         </div>
+//         <div>
+//         <Link to={`/product/${handle}/`} className="post-card-link">
+//           <h2 className="post-card-title">
+//             {title}
+//           </h2>
+//         </Link>
+//         </div>
+//         <div className="post-card-date">
+//         {createdAt}
+//         </div>
+//         <div className="post-card-body">
+//         {description}
+//         </div>
+//         <div>
+//         <Link to={`/product/${handle}/`} className="post-card-link post-card-readmore">
+//           {
+//             description
+//               ?("Read more")
+//               :(null)
+//           }
+//         </Link>
+//         </div>
+//       </div>
+//     );
+//   }
+// }
 
 class ContentWithImage extends Component {
   render() {

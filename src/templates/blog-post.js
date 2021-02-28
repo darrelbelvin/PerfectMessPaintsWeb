@@ -23,9 +23,12 @@ const BlogPostTemplate = ( post ) => {
 
   const [imageId, setImageID] = useState(0);
 
-  const checkInCart = () => {
-    return checkout.lineItems.filter(item => item.variant.id === productVariant.shopifyId).length !== 0;
-  };
+  const checkInCart = useCallback(
+    () => {
+      return checkout.lineItems.filter(item => item.variant.id === productVariant.shopifyId).length !== 0;
+    },
+    [checkout.lineItems, productVariant.shopifyId]
+  );
 
   const [available, setAvailable] = useState(false)
   const [inCart, setInCart] = useState(checkInCart())
@@ -94,7 +97,7 @@ const BlogPostTemplate = ( post ) => {
         {available && 
           <div className="tag-container">
             {!inCart?
-              <h5 style={{'white-space': 'break-spaces', 'text-align': 'center'}}>
+              <h5 style={{'whiteSpace': 'break-spaces', 'textAlign': 'center'}}>
                 {product.title} is available for {price}  <button
                   type="submit"
                   className="primary"
@@ -132,8 +135,9 @@ const BlogPostTemplate = ( post ) => {
               className="previewButton"
               key={index}
               role='button'
-              onClick={() => {setImageID(index)}
-              }
+              tabIndex={0}
+              onClick={() => {setImageID(index)}}
+              onKeyPress={(e) => {if([32, 13].includes(e.charCode)) {setImageID(index)}}}
             >
               <Img
                 fluid={{ ...img.localFile.childImageSharp.fluid, aspectRatio: 1}}
