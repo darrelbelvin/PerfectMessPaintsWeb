@@ -11,15 +11,18 @@ const ProductGrid = ({data}) => {
   const posts = data.allShopifyProduct.edges
 
   const {
-    store: { client }
-    // storedAvailability
+    store: { client },
+    storedAvailability,
+    storeItemAvailability
   } = useContext(StoreContext)
 
   let postCounter = 0
 
   const initAvailable = Object.assign({}, ...posts.map((p) => (
-    {
-      [p.node.shopifyId]: p.node.availableForSale ? 1 : 0})))
+    {[p.node.shopifyId]: 
+      p.node.shopifyId in storedAvailability ?
+        storedAvailability[p.node.shopifyId]:
+        p.node.availableForSale ? 1 : 0})))
   const [available, setAvailable] = useState(initAvailable)
 
   const checkAvailability = useCallback(
@@ -27,9 +30,10 @@ const ProductGrid = ({data}) => {
       client.product.fetch(productId).then(fetchedProduct => {
         available[productId] = fetchedProduct.variants[0].available ? 2 : 0
         setAvailable(available)
+        storeItemAvailability(productId, available[productId])
       })
     },
-    [client.product, available]
+    [client.product, available, setAvailable, storeItemAvailability]
   )
 
   useEffect(() => {

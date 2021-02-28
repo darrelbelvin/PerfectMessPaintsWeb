@@ -25,7 +25,7 @@ const ContextProvider = ({ children }) => {
   
   const [isRemoved, setIsRemoved] = useState(false)
 
-  // const [storedAvailability, setAvailability] = useState({})
+  const [storedAvailability, setAvailability] = useState(Object.assign({}))
 
   useEffect(() => {
     const initializeCheckout = async () => {
@@ -128,8 +128,12 @@ const ContextProvider = ({ children }) => {
               })
             })
         },
-        // storedAvailability,
-        // setItemAvailability: ()
+        storedAvailability,
+        storeItemAvailability: (shopifyId, available) => {
+          storedAvailability[shopifyId] = available 
+          setAvailability(storedAvailability)
+          console.log([shopifyId, available])
+        }
       }}
     >
       {children}
