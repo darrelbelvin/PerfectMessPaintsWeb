@@ -117,3 +117,15 @@ button.primary:hover,
     margin: 0;
     cursor: pointer;
 }
+
+.slick-prev:before, .slick-next:before {
+    color: var(--color-primary) !important;
+}
+
+.slick-arrow {
+    box-shadow: none;
+}
+
+.slick-dots > li > button {
+    box-shadow: none;
+}
