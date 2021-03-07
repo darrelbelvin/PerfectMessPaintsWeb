@@ -60,6 +60,13 @@ exports.createPages = ({ graphql, actions }) => {
       });
     });
 
+    if (process.env.NODE_ENV === `development`) {
+      createPage({
+        path: `/elements`,
+        component: require.resolve(`./src/templates/elements.js`),
+      })
+    }
+
     return null
   })
 }
