@@ -11,11 +11,11 @@ const Layout = props => {
     <ContextProvider>
       <div className={`site-wrapper ${toggleNav ? `site-head-open` : ``}`}>
         <header className="site-head">
-          <div className="site-head-container">
+          <div className="site-head-container" role="presentation" onClick={() => setToggleNav(false) } onKeyPress={() => setToggleNav(!toggleNav)}>
             <a id="menu-button" /* eslint-disable-line jsx-a11y/anchor-is-valid */
               role="button"
               className="nav-burger"
-              onClick={() => setToggleNav(!toggleNav)} onKeyPress={() => setToggleNav(!toggleNav)}
+              onClick={(e) => {setToggleNav(!toggleNav); e.stopPropagation()}} onKeyPress={() => setToggleNav(!toggleNav)}
               tabIndex={0}
             >
               <div

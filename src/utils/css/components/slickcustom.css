@@ -1,0 +1,41 @@
+.slick-prev:before, .slick-next:before {
+    content: "" !important;
+}
+
+.slick-arrow {    
+    padding: 1rem !important;
+            box-shadow: 5px -5px var(--color-bg-bright) inset;
+    -webkit-box-shadow: 5px -5px var(--color-bg-bright) inset;
+    border: solid transparent !important;
+    border-width: 0 0 2rem 2rem;
+    transition: 0.2s;
+    z-index: 1;
+}
+
+.slick-arrow:hover {
+            box-shadow: 2px -2px 0 2px var(--color-sub-base) inset;
+    -webkit-box-shadow: 4px -4px var(--color-sub-base) inset;
+}
+
+.slick-next { transform:rotate(225deg) !important}
+.slick-prev { transform:rotate(45deg) !important}
+
+@media (max-width: 500px) {
+    /* .slick-next { right: 7px !important }
+    .slick-prev { left: 7px !important } */
+    .slick-arrow { visibility: hidden }
+}
+
+
+.slick-dots > li > button {
+    box-shadow: none;
+}
+
+.slick-dots {
+    position: unset !important;
+}
+
+.slick-initialized .slick-track {
+    display: flex;
+    align-items: center;
+}

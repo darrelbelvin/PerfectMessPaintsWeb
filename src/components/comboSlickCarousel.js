@@ -22,6 +22,15 @@ export default class ComboSlickCarousel extends Component {
   }
 
   render() {
+    var settingsFirst = {
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: true,
+      fade: true,
+      swipeToSlide: true,
+      asNavFor: this.state.nav2,
+      ref: (slider) => (this.slider1 = slider)
+    };
     var settings = {
       slidesToShow: 3,
       slidesToScroll: 1,
@@ -33,33 +42,21 @@ export default class ComboSlickCarousel extends Component {
       asNavFor: this.state.nav1,
       ref: (slider) => (this.slider2 = slider)
     };
-    var settingsFirst = {
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      arrows: true,
-      fade: true,
-      swipeToSlide: true,
-      asNavFor: this.state.nav2,
-      ref: (slider) => (this.slider1 = slider)
-    };
+
     return (
       <div className="container">
         <Slider {...settingsFirst}>
           {this.props.imageList.map((img, index) => (
-            <div key={index}>
-              <Img
-                fluid={{ ...img.localFile.childImageSharp.fluid }}
-              />
-            </div>
+            <Img key={index}
+              fluid={{ ...img.localFile.childImageSharp.fluid }}
+            />
           ))}
         </Slider>
         <Slider {...settings}>
           {this.props.imageList.map((img, index) => (
-            <div key={index}>
-              <Img
-                fluid={{ ...img.localFile.childImageSharp.fluid }}
-              />
-            </div>
+            <Img key={index}
+              fluid={{ ...img.localFile.childImageSharp.fluid }}
+            />
           ))}
         </Slider>
       </div>

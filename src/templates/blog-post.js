@@ -119,16 +119,25 @@ const BlogPostTemplate = ( post ) => {
         <ComboSlickCarousel imageList={product.images}/>
 
       </article>
-      <div>
+      <ul className="actions">
         {previous &&
-        <Link to={`/product/${previous.handle}`}>
-          Previous
-        </Link>}
+        <li>
+          <Link to={`/product/${previous.handle}`}>
+            <button type="button" className="small">Previous</button>
+          </Link>
+        </li>}
+        <li>
+          <Link to={`/`}>
+            <button type="button" className="small">Home</button>
+          </Link>
+        </li>
         {next &&
-        <Link to={`/product/${next.handle}`}>
-          Next
-        </Link>}
-      </div>
+        <li>
+          <Link to={`/product/${next.handle}`}>
+            <button type="button" className="small">Next</button>
+          </Link>
+        </li>}
+      </ul>
     </>
   )
 }
