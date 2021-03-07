@@ -1,17 +1,18 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react'
 
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
 import _ from "lodash"
 import { Link } from "gatsby"
 
 import SEO from "../components/seo"
+import ComboSlickCarousel from "../components/comboSlickCarousel"
 
 import StoreContext from '../context/StoreContext'
 
 
 const BlogPostTemplate = ( post ) => {
   const product = post.data.shopifyProduct
+  const { previous, next } = post.pageContext
   const {
     variants: [productVariant],
     priceRange: { minVariantPrice },
@@ -20,8 +21,6 @@ const BlogPostTemplate = ( post ) => {
     addVariantToCart,
     store: { client, adding, checkout },
   } = useContext(StoreContext)
-
-  const [imageId, setImageID] = useState(0);
 
   const checkInCart = useCallback(
     () => {
@@ -117,37 +116,28 @@ const BlogPostTemplate = ( post ) => {
           </div>
         }
 
-        <Img
-          className="post-content-image"
-          fluid={product.images[imageId].localFile.childImageSharp.fluid}
-          alt={product.title}
-          style={{maxHeight: '65vh'}}
-          imgStyle={{objectFit: 'contain'}}
-        />
+        <ComboSlickCarousel imageList={product.images}/>
 
-        <div style={{
-                      display: "grid",
-                      gridTemplateColumns: `repeat(${product.images.length}, 1fr)`,
-                      gridGap: "5px"
-                    }}>
-          {product.images.map((img, index) => (
-            <div
-              className="previewButton"
-              key={index}
-              role='button'
-              tabIndex={0}
-              onClick={() => {setImageID(index)}}
-              onKeyPress={(e) => {if([32, 13].includes(e.charCode)) {setImageID(index)}}}
-            >
-              <Img
-                fluid={{ ...img.localFile.childImageSharp.fluid, aspectRatio: 1}}
-                alt={product.title}
-              />
-            </div>
-            ))
-          }
-        </div>
       </article>
+      <ul className="actions">
+        {previous &&
+        <li>
+          <Link to={`/product/${previous.handle}`}>
+            <button type="button" className="small">Previous</button>
+          </Link>
+        </li>}
+        <li>
+          <Link to={`/`}>
+            <button type="button" className="small">Home</button>
+          </Link>
+        </li>
+        {next &&
+        <li>
+          <Link to={`/product/${next.handle}`}>
+            <button type="button" className="small">Next</button>
+          </Link>
+        </li>}
+      </ul>
     </>
   )
 }

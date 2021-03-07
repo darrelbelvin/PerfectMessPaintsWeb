@@ -1,6 +1,5 @@
 const path = require(`path`)
 const _ = require("lodash");
-const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
@@ -10,7 +9,7 @@ exports.createPages = ({ graphql, actions }) => {
   
   return graphql(`
   {
-    allShopifyProduct {
+    allShopifyProduct(sort: {fields: createdAt}) {
       edges {
         node {
           handle,
@@ -61,19 +60,13 @@ exports.createPages = ({ graphql, actions }) => {
       });
     });
 
+    if (process.env.NODE_ENV === `development`) {
+      createPage({
+        path: `/elements`,
+        component: require.resolve(`./src/templates/elements.js`),
+      })
+    }
+
     return null
   })
-}
-
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-  }
 }
