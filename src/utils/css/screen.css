@@ -21,6 +21,7 @@ production stylesheet in assets/built/screen.css using gulp dev
 @import "components/prism.css";
 @import "components/ribbons.css";
 @import "components/slickcustom.css";
+@import "components/paginate.css";
 
 /* Main - Theme styles
 /* ---------------------------------------------------------- */
@@ -79,7 +80,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 13vw 0;
+  padding: 8vw 0;
   max-width: 70%;
   margin: auto;
   text-align: center;

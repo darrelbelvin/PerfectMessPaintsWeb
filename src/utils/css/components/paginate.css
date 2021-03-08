@@ -1,0 +1,34 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.page-item {
+    margin: 0.7vw;
+    padding: 0.5vw;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 2rem;
+    line-height: 1em;
+}
+
+.page-item-active {
+    background-color: var(--color-bg-bright);
+    border-radius: 4px;
+}
+
+.page-link {
+    text-decoration: none !important;
+}
+
+.page-link-active {
+    color: var(--color-sub-base);
+}
+
+@media (max-width: 500px) {
+    .page-item {
+        margin: 1vw;
+        padding: 0.5vw;
+    }
+}
