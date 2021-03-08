@@ -23,7 +23,7 @@ const BlogIndex = (props) => {
       {data.site.siteMetadata.description && (
         <header className="page-head">
           <h2 className="page-head-title">
-            Jenna Belvin's art gallery. Mostly pour paintings, some abstract and other pieces. Available for <Link to='/policies/#commissions'>commissions</Link>!
+            Jenna's art gallery. Mostly pour paintings, some abstract and other pieces. Available for <Link to='/policies/#commissions'>commissions</Link>!
           </h2>
         </header>
       )}

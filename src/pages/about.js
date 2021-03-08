@@ -28,10 +28,10 @@ const AboutPage = ({ data }, location) => {
       <article className="post-content page-template no-image">
         <div className="post-content-body">
           <h2>
-            Creative, beautiful, and often a hot mess. Jenna Belvin is an artist
+            Creative, beautiful, and often a hot mess. Jenna is an artist
             with a passion for abstract and pour pieces.
           </h2>
-          <figure className="kg-card kg-image-card kg-width-full">
+          <figure className="kg-card kg-image-card kg-width-wide">
             <Img
               fluid={data.profileShot.childImageSharp.fluid}
               className="kg-image"
