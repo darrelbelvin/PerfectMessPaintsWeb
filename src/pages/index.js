@@ -20,13 +20,24 @@ const BlogIndex = (props) => {
     //   />
 
     <>
-      {data.site.siteMetadata.description && (
-        <header className="page-head">
-          <h2 className="page-head-title">
-            Jenna's art gallery. Mostly pour paintings, some abstract and other pieces. Available for <Link to='/policies/#commissions'>commissions</Link>!
-          </h2>
-        </header>
-      )}
+      <header className="page-head">
+        <h2 className="page-head-title">
+          Jenna's art gallery. Mostly pour paintings, some abstract and other pieces.
+          Available for <Link to='/policies/#commissions'>commissions</Link>!
+        </h2>
+        <h4>
+          Jenna has around {Math.round((80 - data.allShopifyProduct.edges.length) / 5) * 5} pieces
+          of art that are not yet on this site. Please check back often to see more as they are uploaded.
+          Also, follow her on <a
+            href={`https://www.instagram.com/perfectmesspaints/`}
+            title="Instagram"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
+        </h4>
+      </header>
       <ProductGrid data={data}/>
     </>
   )
